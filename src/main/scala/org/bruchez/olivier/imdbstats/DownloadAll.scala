@@ -7,7 +7,7 @@ import com.amazonaws.auth.{AWSStaticCredentialsProvider, BasicAWSCredentials}
 import com.amazonaws.services.s3.AmazonS3Client
 import com.amazonaws.services.s3.model.GetObjectRequest
 
-// Quickly adapted from GetObject.java sample code
+// Quickly adapted from GetObject.java example code
 
 object DownloadAll {
   private val bucketName = "imdb-datasets"
