@@ -16,7 +16,20 @@ object ImdbStats {
   val NoValue = "\\N"
 
   def main(args: Array[String]): Unit = {
-    val MinimumVoteCount = 1000
+    val ratingVoteCounts = this.ratingVoteCounts().sorted
+
+    val minVoteCount = ratingVoteCounts.head
+    val maxVoteCount = ratingVoteCounts.last
+    val medianVoteCount = ratingVoteCounts(ratingVoteCounts.size / 2)
+    val averageVoteCount = ratingVoteCounts.sum.toDouble / ratingVoteCounts.size
+    val topFivePercentilCount = ratingVoteCounts(
+      ratingVoteCounts.size * 95 / 100)
+
+    println(
+      s"Rating vote counts: min = $minVoteCount, max = $maxVoteCount, median = $medianVoteCount, average = $averageVoteCount")
+    println(s"topFivePercentilCount = $topFivePercentilCount")
+
+    val MinimumVoteCount = 10000
 
     val ratingsById =
       this.ratingsById(voteCountThreshold = Some(MinimumVoteCount))
@@ -119,6 +132,23 @@ object ImdbStats {
     )
 
     mutableRatingsById.toMap
+  }
+
+  // Rating * 10
+  def ratingVoteCounts(): Seq[Int] = {
+    val mutableCounts = collection.mutable.Buffer[Int]()
+
+    fromTsvGz[Unit](
+      RatingsFilename,
+      row => {
+        val voteCount = row(2).toString.toInt
+        mutableCounts.append(voteCount)
+
+        None
+      }
+    )
+
+    mutableCounts
   }
 
   def fromTsvGz[T](path: String, f: Array[AnyRef] => Option[T]): Seq[T] = {
