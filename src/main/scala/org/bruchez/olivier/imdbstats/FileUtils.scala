@@ -1,7 +1,7 @@
 package org.bruchez.olivier.imdbstats
 
 import java.io.{BufferedReader, FileInputStream, InputStreamReader}
-import java.nio.file.Path
+import java.nio.file._
 import java.util.zip.GZIPInputStream
 
 import com.univocity.parsers.common.ParsingContext
@@ -42,6 +42,16 @@ object FileUtils {
       buffer
     } finally {
       in.close()
+    }
+  }
+
+  def writeStrings(path: Path, strings: Seq[String]): Unit = {
+    val writer = Files.newBufferedWriter(path)
+
+    try {
+      strings.foreach(string => writer.write(string + "\n"))
+    } finally {
+      writer.close()
     }
   }
 }

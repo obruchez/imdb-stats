@@ -8,3 +8,4 @@ scalafmtOnCompile in ThisBuild := true
 
 libraryDependencies += "com.amazonaws" % "aws-java-sdk" % "1.11.226"
 libraryDependencies += "com.univocity" % "univocity-parsers" % "2.5.8"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.4" % "test"
