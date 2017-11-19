@@ -42,5 +42,13 @@ class StatsTest extends FlatSpec with Matchers {
     Stats(Seq(1, 2, 2, 2, 1)).median should be(2)
     Stats(Seq(1, 1, 2, 2, 2, 1, 1)).median should be(1)
   }
+
+  "Frequencies" should "work as expected" in {
+    ValuesAndStats(Seq(1, 2, 3)).frequencies(intervalCount = 3) should be(
+      Seq((1, 1), (2, 1), (3, 1)))
+
+    ValuesAndStats(Seq(1, 3)).frequencies(intervalCount = 3) should be(
+      Seq((1, 1), (2, 0), (3, 1)))
+  }
 }
 // scalastyle:on magic.number

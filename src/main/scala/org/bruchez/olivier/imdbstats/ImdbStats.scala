@@ -6,24 +6,37 @@ object ImdbStats {
   val BasicsFilename = "title.basics.tsv.gz"
   val RatingsFilename = "title.ratings.tsv.gz"
 
-  val RatingVoteCountsFilename = "rating-vote-counts.txt"
-
   val MovieType = "movie"
 
   val NoValue = "\\N"
 
   def main(args: Array[String]): Unit = {
-    dumpFrequencyPlots()
+    dumpRatingVoteCountFrequencies(filename =
+                                     "rating-vote-count-frequencies.tsv",
+                                   countsFilter = _.map(_.toDouble))
+
+    dumpRatingVoteCountFrequencies(
+      filename = "rating-vote-count-frequencies.log10.tsv",
+      countsFilter = _.map(count => math.log10(count)))
+
+    dumpRatingVoteCountFrequencies(
+      filename = "rating-vote-count-frequencies.95.tsv",
+      countsFilter = counts => {
+        counts.sorted.take(95 * counts.size / 100).map(_.toDouble)
+      })
   }
 
-  def dumpFrequencyPlots(): Unit = {
-    val ratingVoteCounts = this.ratingVoteCounts().map(_.toDouble)
-    val ratingStats = Stats(ratingVoteCounts)
+  def dumpRatingVoteCountFrequencies(
+      filename: String,
+      countsFilter: (Seq[Int]) => Seq[Double]): Unit = {
+    val IntervalCount = 30
 
-    ratingStats.asStrings.foreach(println)
+    val valuesAndStats = ValuesAndStats(countsFilter(this.ratingVoteCounts()))
 
-    //Stats.dumpToGnuplotFile(Paths.get(RatingVoteCountsFilename),
-    //                        ratingVoteCounts)
+    valuesAndStats.stats.asStrings.foreach(println)
+
+    valuesAndStats.dumpFrequenciesToGnuplotFile(Paths.get(filename),
+                                                intervalCount = IntervalCount)
   }
 
   // scalastyle:off
