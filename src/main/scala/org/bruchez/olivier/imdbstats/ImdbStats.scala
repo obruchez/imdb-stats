@@ -8,22 +8,42 @@ object ImdbStats {
 
   val MovieType = "movie"
 
-  val NoValue = "\\N"
-
   def main(args: Array[String]): Unit = {
     dumpRatingVoteCountFrequencies(filename =
                                      "rating-vote-count-frequencies.tsv",
                                    countsFilter = _.map(_.toDouble))
 
     dumpRatingVoteCountFrequencies(
-      filename = "rating-vote-count-frequencies.log10.tsv",
-      countsFilter = _.map(count => math.log10(count)))
-
-    dumpRatingVoteCountFrequencies(
       filename = "rating-vote-count-frequencies.95.tsv",
       countsFilter = counts => {
         counts.sorted.take(95 * counts.size / 100).map(_.toDouble)
       })
+
+    dumpRatingVoteCountFrequencies(
+      filename = "rating-vote-count-frequencies.log10.tsv",
+      countsFilter = _.map(count => math.log10(count)))
+
+    printRatingVoteCountStats()
+  }
+
+  def printRatingVoteCountStats(): Unit = {
+    val valuesAndStats =
+      ValuesAndStats(this.titleRatings().map(_.voteCount.toDouble))
+
+    valuesAndStats.stats.asStrings.foreach(println)
+
+    // scalastyle:off magic.number
+    val minCounts = Seq(100, 1000, 10000, 100000, 1000000)
+    // scalastyle:on magic.number
+
+    for (minCount <- minCounts) {
+      val counts = valuesAndStats.values.count(_ >= minCount)
+      println(
+        s"Vote counts >= $minCount: $counts (${counts * 100.0 / valuesAndStats.values.size}%)")
+    }
+
+    // @todo dump titles of movies with most votes
+    //val x = this.
   }
 
   def dumpRatingVoteCountFrequencies(
@@ -31,9 +51,11 @@ object ImdbStats {
       countsFilter: (Seq[Int]) => Seq[Double]): Unit = {
     val IntervalCount = 30
 
-    val valuesAndStats = ValuesAndStats(countsFilter(this.ratingVoteCounts()))
+    val titleRatings = this.titleRatings()
+    println(s"titleRatings -> ${titleRatings.size}")
 
-    valuesAndStats.stats.asStrings.foreach(println)
+    val valuesAndStats = ValuesAndStats(
+      countsFilter(titleRatings.map(_.voteCount)))
 
     valuesAndStats.dumpFrequenciesToGnuplotFile(Paths.get(filename),
                                                 intervalCount = IntervalCount)
@@ -41,7 +63,7 @@ object ImdbStats {
 
   // scalastyle:off
   def test(): Unit = {
-    val ratingVoteCounts = this.ratingVoteCounts().sorted
+    val ratingVoteCounts = this.titleRatings().map(_.voteCount).sorted
 
     val minVoteCount = ratingVoteCounts.head
     val maxVoteCount = ratingVoteCounts.last
@@ -95,36 +117,6 @@ object ImdbStats {
   }
   // scalastyle:on
 
-  case class TitleInfo(id: String,
-                       titleType: String,
-                       primaryTitle: String,
-                       originalTitle: String,
-                       isAdult: Boolean,
-                       startYear: Option[Int],
-                       endYear: Option[Int],
-                       runtimeMinutes: Option[Int],
-                       genres: Seq[String])
-
-  object TitleInfo {
-    def apply(row: Array[AnyRef]): TitleInfo = {
-      val strings = row.map(_.toString)
-
-      // scalastyle:off magic.number
-      TitleInfo(
-        id = strings(0),
-        titleType = strings(1),
-        primaryTitle = strings(2),
-        originalTitle = strings(3),
-        isAdult = strings(4).toInt != 0,
-        startYear = Some(strings(5)).filter(_ != NoValue).map(_.toInt),
-        endYear = Some(strings(6)).filter(_ != NoValue).map(_.toInt),
-        runtimeMinutes = Some(strings(7)).filter(_ != NoValue).map(_.toInt),
-        genres = strings(8).split(',').map(_.trim)
-      )
-      // scalastyle:on magic.number
-    }
-  }
-
   def filteredIds(f: TitleInfo => Boolean): Set[String] = {
     val ids = collection.mutable.Set[String]()
 
@@ -139,41 +131,19 @@ object ImdbStats {
     ids.toSet
   }
 
-  // Rating * 10
-  def ratingsById(voteCountThreshold: Option[Int] = None): Map[String, Int] = {
-    val mutableRatingsById = collection.mutable.Map[String, Int]()
-
-    FileUtils.fromTsvGz[Unit](
+  def titleRatings(): Seq[TitleRating] =
+    FileUtils.fromTsvGz[TitleRating](
       Paths.get(RatingsFilename),
-      row => {
-        val rating = (row(1).toString.toDouble * 10).round.toInt
-        val voteCount = row(2).toString.toInt
-
-        if (voteCountThreshold.map(_ <= voteCount).getOrElse(true)) {
-          mutableRatingsById(row(0).toString) = rating
-        }
-
-        None
-      }
+      row => Some(TitleRating(row))
     )
 
-    mutableRatingsById.toMap
-  }
-
   // Rating * 10
-  def ratingVoteCounts(): Seq[Int] = {
-    val mutableCounts = collection.mutable.Buffer[Int]()
-
-    FileUtils.fromTsvGz[Unit](
-      Paths.get(RatingsFilename),
-      row => {
-        val voteCount = row(2).toString.toInt
-        mutableCounts.append(voteCount)
-
-        None
+  def ratingsById(voteCountThreshold: Option[Int] = None): Map[String, Int] =
+    this
+      .titleRatings()
+      .filter { titleRating =>
+        voteCountThreshold.map(titleRating.voteCount >= _).getOrElse(true)
       }
-    )
-
-    mutableCounts
-  }
+      .map(kv => kv.id -> kv.ratingMultipliedByTen)
+      .toMap
 }
