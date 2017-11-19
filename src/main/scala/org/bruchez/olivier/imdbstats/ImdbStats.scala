@@ -1,11 +1,6 @@
 package org.bruchez.olivier.imdbstats
 
-import com.univocity.parsers.common.ParsingContext
-import com.univocity.parsers.common.processor.ObjectRowProcessor
-import com.univocity.parsers.tsv.TsvParser
-import com.univocity.parsers.tsv.TsvParserSettings
-import java.io._
-import java.util.zip.GZIPInputStream
+import java.nio.file.Paths
 
 object ImdbStats {
   val BasicsFilename = "title.basics.tsv.gz"
@@ -102,7 +97,7 @@ object ImdbStats {
   def filteredIds(f: TitleInfo => Boolean): Set[String] = {
     val ids = collection.mutable.Set[String]()
 
-    fromTsvGz[Unit](BasicsFilename, row => {
+    FileUtils.fromTsvGz[Unit](Paths.get(BasicsFilename), row => {
       val titleInfo = TitleInfo(row)
       if (f(titleInfo)) {
         ids.add(titleInfo.id)
@@ -117,8 +112,8 @@ object ImdbStats {
   def ratingsById(voteCountThreshold: Option[Int] = None): Map[String, Int] = {
     val mutableRatingsById = collection.mutable.Map[String, Int]()
 
-    fromTsvGz[Unit](
-      RatingsFilename,
+    FileUtils.fromTsvGz[Unit](
+      Paths.get(RatingsFilename),
       row => {
         val rating = (row(1).toString.toDouble * 10).round.toInt
         val voteCount = row(2).toString.toInt
@@ -138,8 +133,8 @@ object ImdbStats {
   def ratingVoteCounts(): Seq[Int] = {
     val mutableCounts = collection.mutable.Buffer[Int]()
 
-    fromTsvGz[Unit](
-      RatingsFilename,
+    FileUtils.fromTsvGz[Unit](
+      Paths.get(RatingsFilename),
       row => {
         val voteCount = row(2).toString.toInt
         mutableCounts.append(voteCount)
@@ -149,41 +144,5 @@ object ImdbStats {
     )
 
     mutableCounts
-  }
-
-  def fromTsvGz[T](path: String, f: Array[AnyRef] => Option[T]): Seq[T] = {
-    val fis = new FileInputStream(path)
-    val gzis = new GZIPInputStream(fis)
-    val isr = new InputStreamReader(gzis)
-    val in = new BufferedReader(isr)
-
-    var first = true
-
-    try {
-      val settings = new TsvParserSettings
-
-      val buffer = collection.mutable.Buffer[T]()
-
-      val rowProcessor = new ObjectRowProcessor() {
-        override def rowProcessed(row: Array[AnyRef],
-                                  context: ParsingContext): Unit = {
-          if (first) {
-            first = false
-          } else {
-            f(row).foreach(buffer.append(_))
-          }
-        }
-      }
-
-      settings.setProcessor(rowProcessor)
-
-      val parser = new TsvParser(settings)
-
-      parser.parse(in)
-
-      buffer
-    } finally {
-      in.close()
-    }
   }
 }
