@@ -6,11 +6,28 @@ object ImdbStats {
   val BasicsFilename = "title.basics.tsv.gz"
   val RatingsFilename = "title.ratings.tsv.gz"
 
+  val RatingVoteCountsFilename = "rating-vote-counts.txt"
+
   val MovieType = "movie"
 
   val NoValue = "\\N"
 
   def main(args: Array[String]): Unit = {
+    dumpFrequencyPlots()
+  }
+
+  def dumpFrequencyPlots(): Unit = {
+    val ratingVoteCounts = this.ratingVoteCounts().map(_.toDouble)
+    val ratingStats = Stats(ratingVoteCounts)
+
+    ratingStats.asStrings.foreach(println)
+
+    //Stats.dumpToGnuplotFile(Paths.get(RatingVoteCountsFilename),
+    //                        ratingVoteCounts)
+  }
+
+  // scalastyle:off
+  def test(): Unit = {
     val ratingVoteCounts = this.ratingVoteCounts().sorted
 
     val minVoteCount = ratingVoteCounts.head
@@ -63,6 +80,7 @@ object ImdbStats {
       println(s"Movie >= $rating count: $count")
     }
   }
+  // scalastyle:on
 
   case class TitleInfo(id: String,
                        titleType: String,
