@@ -23,8 +23,7 @@ object FileUtils {
       val buffer = collection.mutable.Buffer[T]()
 
       val rowProcessor = new ObjectRowProcessor() {
-        override def rowProcessed(row: Array[AnyRef],
-                                  context: ParsingContext): Unit = {
+        override def rowProcessed(row: Array[AnyRef], context: ParsingContext): Unit = {
           if (first) {
             first = false
           } else {

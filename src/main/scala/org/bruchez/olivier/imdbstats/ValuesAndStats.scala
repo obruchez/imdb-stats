@@ -5,8 +5,7 @@ import java.nio.file.Path
 import scala.annotation.tailrec
 
 case class ValuesAndStats(values: Seq[Double], stats: Stats) {
-  def frequencies(intervalCount: Int = ValuesAndStats.DefaultIntervalCount)
-    : Seq[(Double, Int)] = {
+  def frequencies(intervalCount: Int = ValuesAndStats.DefaultIntervalCount): Seq[(Double, Int)] = {
     val sorted = values.sorted
 
     // We will consider intervalCount intervals and count the values inside those intervals. The first interval will be
@@ -32,9 +31,7 @@ case class ValuesAndStats(values: Seq[Double], stats: Stats) {
 
         val newAcc = acc :+ (middleValueForCurrentInterval, countForCurrentInterval)
 
-        frequencies(interval + 1,
-                    startIndex = startIndex + countForCurrentInterval,
-                    newAcc)
+        frequencies(interval + 1, startIndex = startIndex + countForCurrentInterval, newAcc)
       }
     }
 
@@ -47,9 +44,7 @@ case class ValuesAndStats(values: Seq[Double], stats: Stats) {
   def dumpFrequenciesToGnuplotFile(
       path: Path,
       intervalCount: Int = ValuesAndStats.DefaultIntervalCount): Unit =
-    FileUtils.writeStrings(
-      path,
-      frequencies(intervalCount).map(kv => s"${kv._1}\t${kv._2}"))
+    FileUtils.writeStrings(path, frequencies(intervalCount).map(kv => s"${kv._1}\t${kv._2}"))
 }
 
 object ValuesAndStats {

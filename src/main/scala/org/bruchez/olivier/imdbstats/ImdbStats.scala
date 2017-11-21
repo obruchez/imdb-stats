@@ -9,19 +9,16 @@ object ImdbStats {
   val MovieType = "movie"
 
   def main(args: Array[String]): Unit = {
-    dumpRatingVoteCountFrequencies(filename =
-                                     "rating-vote-count-frequencies.tsv",
+    dumpRatingVoteCountFrequencies(filename = "rating-vote-count-frequencies.tsv",
                                    countsFilter = _.map(_.toDouble))
 
-    dumpRatingVoteCountFrequencies(
-      filename = "rating-vote-count-frequencies.95.tsv",
-      countsFilter = counts => {
-        counts.sorted.take(95 * counts.size / 100).map(_.toDouble)
-      })
+    dumpRatingVoteCountFrequencies(filename = "rating-vote-count-frequencies.95.tsv",
+                                   countsFilter = counts => {
+                                     counts.sorted.take(95 * counts.size / 100).map(_.toDouble)
+                                   })
 
-    dumpRatingVoteCountFrequencies(
-      filename = "rating-vote-count-frequencies.log10.tsv",
-      countsFilter = _.map(count => math.log10(count)))
+    dumpRatingVoteCountFrequencies(filename = "rating-vote-count-frequencies.log10.tsv",
+                                   countsFilter = _.map(count => math.log10(count)))
 
     printRatingVoteCountStats()
   }
@@ -46,19 +43,16 @@ object ImdbStats {
     //val x = this.
   }
 
-  def dumpRatingVoteCountFrequencies(
-      filename: String,
-      countsFilter: (Seq[Int]) => Seq[Double]): Unit = {
+  def dumpRatingVoteCountFrequencies(filename: String,
+                                     countsFilter: (Seq[Int]) => Seq[Double]): Unit = {
     val IntervalCount = 30
 
     val titleRatings = this.titleRatings()
     println(s"titleRatings -> ${titleRatings.size}")
 
-    val valuesAndStats = ValuesAndStats(
-      countsFilter(titleRatings.map(_.voteCount)))
+    val valuesAndStats = ValuesAndStats(countsFilter(titleRatings.map(_.voteCount)))
 
-    valuesAndStats.dumpFrequenciesToGnuplotFile(Paths.get(filename),
-                                                intervalCount = IntervalCount)
+    valuesAndStats.dumpFrequenciesToGnuplotFile(Paths.get(filename), intervalCount = IntervalCount)
   }
 
   // scalastyle:off
@@ -69,8 +63,7 @@ object ImdbStats {
     val maxVoteCount = ratingVoteCounts.last
     val medianVoteCount = ratingVoteCounts(ratingVoteCounts.size / 2)
     val averageVoteCount = ratingVoteCounts.sum.toDouble / ratingVoteCounts.size
-    val topFivePercentilCount = ratingVoteCounts(
-      ratingVoteCounts.size * 95 / 100)
+    val topFivePercentilCount = ratingVoteCounts(ratingVoteCounts.size * 95 / 100)
 
     println(
       s"Rating vote counts: min = $minVoteCount, max = $maxVoteCount, median = $medianVoteCount, average = $averageVoteCount")
@@ -107,8 +100,7 @@ object ImdbStats {
     val minimumImdbRatingMovieCount =
       filteredRatings.count(_ >= minimumImdbRating)
 
-    println(
-      s"Minimum IMDb rating: $minimumImdbRating (=> $minimumImdbRatingMovieCount movies)")
+    println(s"Minimum IMDb rating: $minimumImdbRating (=> $minimumImdbRatingMovieCount movies)")
 
     for (rating <- 70 to 100 by 1) {
       val count = filteredRatings.count(_ >= rating)

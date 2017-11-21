@@ -41,8 +41,9 @@ object DownloadAll {
       writeFile(s3object.getObjectContent, filename)
     } catch {
       case ase: AmazonServiceException =>
-        println("Caught an AmazonServiceException, which  means your request made it to " +
-          "Amazon S3, but was rejected with an error response for some reason.")
+        println(
+          "Caught an AmazonServiceException, which  means your request made it to " +
+            "Amazon S3, but was rejected with an error response for some reason.")
         println("Error Message:    " + ase.getMessage)
         println("HTTP Status Code: " + ase.getStatusCode)
         println("AWS Error Code:   " + ase.getErrorCode)
