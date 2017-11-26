@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sbt "runMain org.bruchez.olivier.imdbstats.ImdbStats"
+sbt "runMain org.bruchez.olivier.imdbstats.GeneratePlots"
 
 mkdir -p results
 
