@@ -30,6 +30,10 @@ As of November 26, 2017, 782977 entries have ratings:
 - mode: 5.00
 - standard deviation: 15233.99
 
-Most entries don't have much votes. The standard frequency plot is not very useful.
+Most entries don't have much votes. The standard frequency plot is not very useful:
 
-![Rating vote counts](/results/rating-vote-count-frequencies.png | width=200)
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.png" width="200">
+
+If we zoom to 1100 votes and less, we can see what's happening a little bit better:
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.95.png" width="200">
