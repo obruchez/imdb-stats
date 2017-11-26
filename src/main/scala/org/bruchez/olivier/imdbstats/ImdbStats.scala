@@ -8,53 +8,6 @@ object ImdbStats {
 
   val MovieType = "movie"
 
-  def main(args: Array[String]): Unit = {
-    dumpRatingVoteCountFrequencies(filename = "rating-vote-count-frequencies.tsv",
-                                   countsFilter = _.map(_.toDouble))
-
-    dumpRatingVoteCountFrequencies(filename = "rating-vote-count-frequencies.95.tsv",
-                                   countsFilter = counts => {
-                                     counts.sorted.take(95 * counts.size / 100).map(_.toDouble)
-                                   })
-
-    dumpRatingVoteCountFrequencies(filename = "rating-vote-count-frequencies.log10.tsv",
-                                   countsFilter = _.map(count => math.log10(count)))
-
-    printRatingVoteCountStats()
-  }
-
-  def printRatingVoteCountStats(): Unit = {
-    val valuesAndStats =
-      ValuesAndStats(this.titleRatings().map(_.voteCount.toDouble))
-
-    valuesAndStats.stats.asStrings.foreach(println)
-
-    // scalastyle:off magic.number
-    val minCounts = Seq(100, 1000, 10000, 100000, 1000000)
-    // scalastyle:on magic.number
-
-    for (minCount <- minCounts) {
-      val counts = valuesAndStats.values.count(_ >= minCount)
-      println(
-        s"Vote counts >= $minCount: $counts (${counts * 100.0 / valuesAndStats.values.size}%)")
-    }
-
-    // @todo dump titles of movies with most votes
-    //val x = this.
-  }
-
-  def dumpRatingVoteCountFrequencies(filename: String,
-                                     countsFilter: (Seq[Int]) => Seq[Double]): Unit = {
-    val IntervalCount = 30
-
-    val titleRatings = this.titleRatings()
-    println(s"titleRatings -> ${titleRatings.size}")
-
-    val valuesAndStats = ValuesAndStats(countsFilter(titleRatings.map(_.voteCount)))
-
-    valuesAndStats.dumpFrequenciesToGnuplotFile(Paths.get(filename), intervalCount = IntervalCount)
-  }
-
   // scalastyle:off
   def test(): Unit = {
     val ratingVoteCounts = this.titleRatings().map(_.voteCount).sorted
