@@ -32,4 +32,4 @@ As of November 26, 2017, 782977 entries have ratings:
 
 Most entries don't have much votes. The standard frequency plot is not very useful.
 
-![Rating vote counts](/results/rating-vote-count-frequencies.png)
+![Rating vote counts](/results/rating-vote-count-frequencies.png | width=200)
