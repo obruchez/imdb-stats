@@ -8,6 +8,8 @@ object PrintStats {
 
     printTitleTypeStats(titleInfosById)
 
+    printRatingStats()
+
     printRatingVoteCountStats(titleInfosById)
   }
 
@@ -19,6 +21,15 @@ object PrintStats {
     for ((titleType, titleCounts) <- titleTypesAndCounts.sortBy(_._2).reverse) {
       println(f" - ${ImdbStats.titleTypeDescriptions(titleType)}: $titleCounts%,d")
     }
+  }
+
+  def printRatingStats(): Unit = {
+    val titleRatings = ImdbStats.titleRatings()
+
+    val valuesAndStats = ValuesAndStats(titleRatings.map(_.rating))
+
+    println("\nRatings stats:\n")
+    valuesAndStats.stats.asStrings.foreach(println)
   }
 
   def printRatingVoteCountStats(titleInfosById: Map[String, TitleInfo]): Unit = {

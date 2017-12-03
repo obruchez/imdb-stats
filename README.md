@@ -39,9 +39,19 @@ They can be partitioned in 10 different types:
 
 785,031 titles (16.82%) have ratings.
 
+- count: 785,031
+- minimum: 1.00
+- maximum: 10.00
+- mean: 6.94
+- median: 7.10
+- mode: 7.20
+- standard deviation: 1.39
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-frequencies.png" width="500">
+
 ## Vote counts
 
-
+Each title with a rating has at least 5 votes (this is a limit enforced by IMDb).
 
 - count: 785,031
 - minimum: 5.00
