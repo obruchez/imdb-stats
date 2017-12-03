@@ -20,15 +20,15 @@ To print statistics:
 
 ## Vote counts
 
-As of November 26, 2017, 782977 entries have ratings:
+As of December 3, 2017, 785031 entries have ratings:
 
-- count: 782977
+- count: 785031
 - minimum: 5.00
-- maximum: 1879739.00
-- mean: 994.78
-- median: 21.00
+- maximum: 1882520.00
+- mean: 994.34
+- median: 20.00
 - mode: 5.00
-- standard deviation: 15233.99
+- standard deviation: 15238.01
 
 Most entries don't have much votes. The full frequency plot is not very useful:
 
@@ -37,3 +37,13 @@ Most entries don't have much votes. The full frequency plot is not very useful:
 If we zoom to 1100 votes and less, we can see what's happening a little bit better:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.95.png" width="500">
+
+About 95% of the entries with votes have 1000 votes or less:
+
+- vote counts >= 100: 173563 (22.11%)
+- vote counts >= 1000: 41737 (5.32%)
+- vote counts >= 10000: 8516 (1.08%)
+- vote counts >= 50000: 2992 (0.38%)
+- vote counts >= 100000: 1598 (0.20%)
+- vote counts >= 500000: 159 (0.02%)
+- vote counts >= 1000000: 23 (0.00%)

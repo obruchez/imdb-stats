@@ -3,6 +3,10 @@ package org.bruchez.olivier.imdbstats
 object PrintStats {
   def main(args: Array[String]): Unit = {
     printRatingVoteCountStats()
+
+    /*println("Loading title infos...")
+    val titleInfos = ImdbStats.titleInfos()
+    println(s"titleInfos -> ${titleInfos.size}")*/
   }
 
   def printRatingVoteCountStats(): Unit = {

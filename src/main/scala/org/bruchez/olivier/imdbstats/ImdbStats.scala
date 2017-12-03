@@ -82,6 +82,12 @@ object ImdbStats {
       row => Some(TitleRating(row))
     )
 
+  def titleInfos(): Seq[TitleInfo] =
+    FileUtils.fromTsvGz[TitleInfo](
+      Paths.get(BasicsFilename),
+      row => Some(TitleInfo(row))
+    )
+
   // Rating * 10
   def ratingsById(voteCountThreshold: Option[Int] = None): Map[String, Int] =
     this
