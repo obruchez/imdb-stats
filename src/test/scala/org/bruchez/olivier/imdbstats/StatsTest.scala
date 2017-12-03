@@ -2,7 +2,6 @@ package org.bruchez.olivier.imdbstats
 
 import org.scalatest._
 
-// scalastyle:off magic.number
 class StatsTest extends FlatSpec with Matchers {
   "Minimum value" should "be correct" in {
     Stats(Seq(1)).min should be(1)
@@ -47,8 +46,6 @@ class StatsTest extends FlatSpec with Matchers {
     ValuesAndStats(Seq(1, 2, 3)).frequencies(intervalCount = 3) should be(
       Seq((1, 1), (2, 1), (3, 1)))
 
-    ValuesAndStats(Seq(1, 3)).frequencies(intervalCount = 3) should be(
-      Seq((1, 1), (2, 0), (3, 1)))
+    ValuesAndStats(Seq(1, 3)).frequencies(intervalCount = 3) should be(Seq((1, 1), (2, 0), (3, 1)))
   }
 }
-// scalastyle:on magic.number

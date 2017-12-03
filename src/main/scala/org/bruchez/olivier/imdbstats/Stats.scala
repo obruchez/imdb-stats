@@ -10,13 +10,13 @@ case class Stats(sampleCount: Int,
   val range: Double = max - min
 
   def asStrings: Seq[String] = Seq(
-    f"- count: $sampleCount",
-    f"- minimum: $min%.2f",
-    f"- maximum: $max%.2f",
-    f"- mean: $mean%.2f",
-    f"- median: $median%.2f",
-    f"- mode: $mode%.2f",
-    f"- standard deviation: $standardDeviation%.2f"
+    f"- count: $sampleCount%,d",
+    f"- minimum: $min%,.2f",
+    f"- maximum: $max%,.2f",
+    f"- mean: $mean%,.2f",
+    f"- median: $median%,.2f",
+    f"- mode: $mode%,.2f",
+    f"- standard deviation: $standardDeviation%,.2f"
   )
 }
 

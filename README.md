@@ -20,30 +20,57 @@ To print statistics:
 
 ## Vote counts
 
-As of December 3, 2017, 785031 entries have ratings:
+As of December 3, 2017, 785,031 entries have ratings:
 
-- count: 785031
+- count: 785,031
 - minimum: 5.00
-- maximum: 1882520.00
+- maximum: 1,882,520.00
 - mean: 994.34
 - median: 20.00
 - mode: 5.00
-- standard deviation: 15238.01
+- standard deviation: 15,238.01
 
 Most entries don't have much votes. The full frequency plot is not very useful:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.png" width="500">
 
-If we zoom to 1100 votes and less, we can see what's happening a little bit better:
+If we zoom to 1,100 votes and less, we can see what's happening a little bit better:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.95.png" width="500">
 
-About 95% of the entries with votes have 1000 votes or less:
+About 95% of the entries with votes have 1,000 votes or less:
 
-- vote counts >= 100: 173563 (22.11%)
-- vote counts >= 1000: 41737 (5.32%)
-- vote counts >= 10000: 8516 (1.08%)
-- vote counts >= 50000: 2992 (0.38%)
-- vote counts >= 100000: 1598 (0.20%)
-- vote counts >= 500000: 159 (0.02%)
-- vote counts >= 1000000: 23 (0.00%)
+- vote counts >= 100: 173,563 (22.11%)
+- vote counts >= 1,000: 41,737 (5.32%)
+- vote counts >= 10,000: 8,516 (1.08%)
+- vote counts >= 50,000: 2,992 (0.38%)
+- vote counts >= 100,000: 1,598 (0.20%)
+- vote counts >= 500,000: 159 (0.02%)
+- vote counts >= 1,000,000: 23 (0.00%)
+
+Here is a list of the titles with more than 1,000,000 votes:
+
+ - 1,882,520 votes: 'The Shawshank Redemption'
+ - 1,858,571 votes: 'The Dark Knight'
+ - 1,647,649 votes: 'Inception'
+ - 1,508,844 votes: 'Fight Club'
+ - 1,472,586 votes: 'Pulp Fiction'
+ - 1,420,328 votes: 'Forrest Gump'
+ - 1,365,653 votes: 'The Lord of the Rings: The Fellowship of the Ring'
+ - 1,354,240 votes: 'The Matrix'
+ - 1,345,371 votes: 'The Lord of the Rings: The Return of the King'
+ - 1,285,173 votes: 'The Godfather'
+ - 1,265,803 votes: 'The Dark Knight Rises'
+ - 1,263,262 votes: 'Game of Thrones'
+ - 1,217,721 votes: 'The Lord of the Rings: The Two Towers'
+ - 1,148,099 votes: 'Se7en'
+ - 1,114,323 votes: 'Interstellar'
+ - 1,092,287 votes: 'Gladiator'
+ - 1,086,703 votes: 'Batman Begins'
+ - 1,083,601 votes: 'Django Unchained'
+ - 1,073,749 votes: 'The Avengers'
+ - 1,039,824 votes: 'Breaking Bad'
+ - 1,011,676 votes: 'Star Wars: Episode IV - A New Hope'
+ - 1,002,303 votes: 'The Silence of the Lambs'
+ - 1,000,534 votes: 'Inglourious Basterds'
+ 

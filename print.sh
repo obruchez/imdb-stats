@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-sbt "runMain org.bruchez.olivier.imdbstats.PrintStats"
+sbt -mem 8192 "runMain org.bruchez.olivier.imdbstats.PrintStats"

@@ -16,7 +16,6 @@ object TitleInfo {
   def apply(row: Array[AnyRef]): TitleInfo = {
     val strings = row.map(_.toString)
 
-    // scalastyle:off magic.number
     TitleInfo(
       id = strings(0),
       titleType = strings(1),
@@ -28,6 +27,5 @@ object TitleInfo {
       runtimeMinutes = Some(strings(7)).filter(_ != NoValue).map(_.toInt),
       genres = strings(8).split(',').map(_.trim)
     )
-    // scalastyle:on magic.number
   }
 }

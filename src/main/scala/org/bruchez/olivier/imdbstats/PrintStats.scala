@@ -2,32 +2,36 @@ package org.bruchez.olivier.imdbstats
 
 object PrintStats {
   def main(args: Array[String]): Unit = {
-    printRatingVoteCountStats()
+    println("Loading title infos...")
+    val titleInfosById = ImdbStats.titleInfos().groupBy(_.id).map(kv => kv._1 -> kv._2.head)
+    println(f"Title info count: ${titleInfosById.size}%,d\n")
 
-    /*println("Loading title infos...")
-    val titleInfos = ImdbStats.titleInfos()
-    println(s"titleInfos -> ${titleInfos.size}")*/
+    printRatingVoteCountStats(titleInfosById)
   }
 
-  def printRatingVoteCountStats(): Unit = {
-    val valuesAndStats =
-      ValuesAndStats(ImdbStats.titleRatings().map(_.voteCount.toDouble))
+  def printRatingVoteCountStats(titleInfosById: Map[String, TitleInfo]): Unit = {
+    val titleRatings = ImdbStats.titleRatings()
 
-    println("Rating vote count stats:\n")
+    val valuesAndStats = ValuesAndStats(titleRatings.map(_.voteCount.toDouble))
+
+    println("Number of votes stats:\n")
     valuesAndStats.stats.asStrings.foreach(println)
 
-    // scalastyle:off magic.number
     val minCounts = Seq(100, 1000, 10000, 50000, 100000, 500000, 1000000)
-    // scalastyle:on magic.number
 
-    println("\nNumber of vote counts >= X:\n")
+    println("\nEntries with number of votes >= X:\n")
     for (minCount <- minCounts) {
       val counts = valuesAndStats.values.count(_ >= minCount)
       println(
-        f"- vote counts >= $minCount: $counts (${counts * 100.0 / valuesAndStats.values.size}%.2f%%)")
+        f"- vote counts >= $minCount%,d: $counts%,d (${counts * 100.0 / valuesAndStats.values.size}%.2f%%)")
     }
 
-    // @todo dump titles of movies with most votes
-    //val x = this.
+    println("\nTitles with most votes:\n")
+    for {
+      titleRating <- titleRatings.sortBy(_.voteCount).reverse.takeWhile(_.voteCount >= 1000000)
+      titleInfo = titleInfosById(titleRating.id)
+    } {
+      println(f" - ${titleRating.voteCount}%,d votes: '${titleInfo.primaryTitle}'")
+    }
   }
 }
