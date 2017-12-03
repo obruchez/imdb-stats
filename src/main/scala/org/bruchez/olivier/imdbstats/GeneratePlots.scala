@@ -4,6 +4,9 @@ import java.nio.file.Paths
 
 object GeneratePlots {
   def main(args: Array[String]): Unit = {
+    dumpRatingRatingFrequencies(filename = "rating-frequencies.tsv",
+                                ratingsFilter = ratings => ratings)
+
     dumpRatingVoteCountFrequencies(filename = "rating-vote-count-frequencies.tsv",
                                    countsFilter = _.map(_.toDouble))
 
@@ -14,6 +17,17 @@ object GeneratePlots {
 
     dumpRatingVoteCountFrequencies(filename = "rating-vote-count-frequencies.log10.tsv",
                                    countsFilter = _.map(count => math.log10(count)))
+  }
+
+  def dumpRatingRatingFrequencies(filename: String,
+                                  ratingsFilter: (Seq[Double]) => Seq[Double]): Unit = {
+    val IntervalCount = 30
+
+    val titleRatings = ImdbStats.titleRatings()
+
+    val valuesAndStats = ValuesAndStats(ratingsFilter(titleRatings.map(_.rating)))
+
+    valuesAndStats.dumpFrequenciesToGnuplotFile(Paths.get(filename), intervalCount = IntervalCount)
   }
 
   def dumpRatingVoteCountFrequencies(filename: String,

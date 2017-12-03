@@ -18,9 +18,30 @@ To print statistics:
 
 ```print.sh```
 
+## Titles
+
+As of December 3, 2017, there are 4,667,234 titles in the IMDb dumps.
+
+They can be partitioned in 10 different types:
+
+ - TV episode: 3,094,331
+ - Short film: 593,693
+ - Feature film: 470,293
+ - Video: 188,357
+ - TV series: 139,223
+ - TV movie: 121,504
+ - TV mini-series: 20,710
+ - Video game: 20,629
+ - TV special: 10,393
+ - TV short: 8,101
+
+## Ratings
+
+785,031 titles (16.82%) have ratings.
+
 ## Vote counts
 
-As of December 3, 2017, 785,031 entries have ratings:
+
 
 - count: 785,031
 - minimum: 5.00
@@ -30,7 +51,7 @@ As of December 3, 2017, 785,031 entries have ratings:
 - mode: 5.00
 - standard deviation: 15,238.01
 
-Most entries don't have much votes. The full frequency plot is not very useful:
+Most titles don't have much votes. The full frequency plot is not very useful:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.png" width="500">
 

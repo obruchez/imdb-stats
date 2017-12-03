@@ -8,6 +8,19 @@ object ImdbStats {
 
   val MovieType = "movie"
 
+  val titleTypeDescriptions = Map(
+    "tvEpisode" -> "TV episode",
+    "short" -> "Short film",
+    "movie" -> "Feature film",
+    "video" -> "Video",
+    "tvSeries" -> "TV series",
+    "tvMovie" -> "TV movie",
+    "tvMiniSeries" -> "TV mini-series",
+    "videoGame" -> "Video game",
+    "tvSpecial" -> "TV special",
+    "tvShort" -> "TV short"
+  )
+
   // scalastyle:off
   def test(): Unit = {
     val ratingVoteCounts = this.titleRatings().map(_.voteCount).sorted

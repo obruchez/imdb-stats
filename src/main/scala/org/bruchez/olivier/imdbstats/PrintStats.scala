@@ -4,9 +4,21 @@ object PrintStats {
   def main(args: Array[String]): Unit = {
     println("Loading title infos...")
     val titleInfosById = ImdbStats.titleInfos().groupBy(_.id).map(kv => kv._1 -> kv._2.head)
-    println(f"Title info count: ${titleInfosById.size}%,d\n")
+    println(f"\nTitle info count: ${titleInfosById.size}%,d\n")
+
+    printTitleTypeStats(titleInfosById)
 
     printRatingVoteCountStats(titleInfosById)
+  }
+
+  def printTitleTypeStats(titleInfosById: Map[String, TitleInfo]): Unit = {
+    val titleTypesAndCounts =
+      titleInfosById.values.groupBy(_.titleType).map(kv => kv._1 -> kv._2.size).toSeq
+
+    println("\nTitle types:\n")
+    for ((titleType, titleCounts) <- titleTypesAndCounts.sortBy(_._2).reverse) {
+      println(f" - ${ImdbStats.titleTypeDescriptions(titleType)}: $titleCounts%,d")
+    }
   }
 
   def printRatingVoteCountStats(titleInfosById: Map[String, TitleInfo]): Unit = {
@@ -14,7 +26,7 @@ object PrintStats {
 
     val valuesAndStats = ValuesAndStats(titleRatings.map(_.voteCount.toDouble))
 
-    println("Number of votes stats:\n")
+    println("\nNumber of votes stats:\n")
     valuesAndStats.stats.asStrings.foreach(println)
 
     val minCounts = Seq(100, 1000, 10000, 50000, 100000, 500000, 1000000)

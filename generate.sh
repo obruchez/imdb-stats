@@ -8,4 +8,6 @@ mv *.tsv results
 
 cd results
 
+gnuplot ../gnuplot/rating-frequencies.gnuplot
+
 gnuplot ../gnuplot/rating-vote-count-frequencies.gnuplot
