@@ -69,7 +69,7 @@ If we zoom to 1,100 votes and less, we can see what's happening a little bit bet
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.95.png" width="500">
 
-About 95% of the entries with votes have 1,000 votes or less:
+About 95% of the titles with votes have 1,000 votes or less:
 
 - vote counts >= 100: 173,563 (22.11%)
 - vote counts >= 1,000: 41,737 (5.32%)
