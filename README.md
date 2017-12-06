@@ -22,7 +22,7 @@ To print statistics:
 
 As of December 3, 2017, there are 4,667,234 titles in the IMDb dumps.
 
-They can be partitioned in 10 different types:
+They can be partitioned into 10 different types:
 
  - TV episode: 3,094,331
  - Short film: 593,693
