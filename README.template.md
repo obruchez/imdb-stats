@@ -79,3 +79,19 @@ $voteCountPercentages
 Here is a list of the titles with more than 1,000,000 votes:
 
 $titlesWithMostVotes
+
+### Minimum ratings
+
+Question: what's the minimum IMDb rating for a feature film that you should watch if you can only watch N feature films in your life?
+
+Here's the plot if you take into account all feature films with ratings:
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.5.png" width="600">
+
+If you take into account only feature films with 100 votes or more:
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.100.png" width="600">
+
+And now with 10000 votes or more:
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.10000.png" width="600">

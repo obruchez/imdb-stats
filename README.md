@@ -141,3 +141,19 @@ Here is a list of the titles with more than 1,000,000 votes:
  21. 1,012,747 votes: [Star Wars: Episode IV - A New Hope](http://www.imdb.com/title/tt0076759/)
  22. 1,003,494 votes: [The Silence of the Lambs](http://www.imdb.com/title/tt0102926/)
  23. 1,001,780 votes: [Inglourious Basterds](http://www.imdb.com/title/tt0361748/)
+
+### Minimum ratings
+
+Question: what's the minimum IMDb rating for a feature film that you should watch if you can only watch N feature films in your life?
+
+Here's the plot if you take into account all feature films with ratings:
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.5.png" width="600">
+
+If you take into account only feature films with 100 votes or more:
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.100.png" width="600">
+
+And now with 10000 votes or more:
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.10000.png" width="600">

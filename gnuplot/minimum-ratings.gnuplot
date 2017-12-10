@@ -6,8 +6,8 @@ set style data boxes
 set boxwidth 0.8 relative
 set style fill solid 1.0
 
-set xlabel "Minimum rating"
-set ylabel "Frequency"
+set xlabel "Number of movies"
+set ylabel "Minimum rating"
 
 set xtics 0,20000,215000
 
