@@ -87,7 +87,7 @@ For short films only:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.shorts.png" width="600">
 
-There is some overlap between the short films and feature films. I'm not sure it totally makes sense (e.g. a feature film shorter than 10 minutes or a short film longer than X minutes?).
+There is some overlap between the short films and feature films. I'm not sure it totally makes sense (e.g. a feature film shorter than 10 minutes or a short film longer than 100 minutes?).
 
 ### Ratings
 
@@ -172,7 +172,7 @@ And now with 10,000 votes or more:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.10000.png" width="600">
 
-Example: let's say you only have the time to watch 1,500 feature film. These are the minimum ratings for various minimum vote counts:
+Example: let's say you only have the time to watch 1,500 feature films. These are the minimum ratings for various minimum number of votes:
 
  - votes >= 5 ⇒ rating >= 9.20
  - votes >= 10 ⇒ rating >= 9.00

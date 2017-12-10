@@ -104,6 +104,6 @@ And now with 10,000 votes or more:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.10000.png" width="600">
 
-Example: let's say you only have the time to watch 1,500 feature film. These are the minimum ratings for various minimum vote counts:
+Example: let's say you only have the time to watch 1,500 feature films. These are the minimum ratings for various minimum number of votes:
 
 $minimumRatings
