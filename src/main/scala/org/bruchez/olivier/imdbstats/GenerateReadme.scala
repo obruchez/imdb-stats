@@ -78,6 +78,7 @@ object GenerateReadme {
   def durationStats(): String = {
     /*ImdbStats.titleInfos
       .filter(_.runtimeMinutes.isDefined)
+      .filter(ti => ImdbStats.titleRatingsById.get(ti.id).exists(_.voteCount > 5))
       .sortBy(_.runtimeMinutes)
       .reverse
       .take(200) foreach { titleInfo =>

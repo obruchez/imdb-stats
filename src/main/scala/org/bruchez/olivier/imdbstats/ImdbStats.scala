@@ -27,6 +27,9 @@ object ImdbStats {
       row => Some(TitleRating(row))
     )
 
+  lazy val titleRatingsById: Map[String, TitleRating] =
+    titleRatings.groupBy(_.id).map(kv => kv._1 -> kv._2.head)
+
   lazy val titleInfos: Seq[TitleInfo] =
     FileUtils.fromTsvGz[TitleInfo](
       Paths.get(BasicsFilename),

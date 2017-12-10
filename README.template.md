@@ -40,7 +40,9 @@ $titleWithDurationCount titles ($titleWithDurationPercentage) have a runtime dur
 
 $durationStats
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.1000.png" width="600">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.500.png" width="600">
+
+Most durations above 1,000 minutes are mistakes, experimental videos, total durations for series, etc.
 
 ### Ratings
 

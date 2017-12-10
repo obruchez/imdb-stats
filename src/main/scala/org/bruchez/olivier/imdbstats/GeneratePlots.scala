@@ -8,8 +8,8 @@ object GeneratePlots {
 
     dumpYearFrequencies(filename = "year-frequencies.2025.tsv", yearsFilter = _.filter(_ <= 2025))
 
-    dumpDurationFrequencies(filename = "duration-frequencies.1000.tsv",
-                            durationsFilter = _.filter(_ <= 1000))
+    dumpDurationFrequencies(filename = "duration-frequencies.500.tsv",
+                            durationsFilter = _.filter(_ <= 500))
 
     dumpRatingVoteCountFrequencies(filename = "rating-vote-count-frequencies.tsv",
                                    countsFilter = _.map(_.toDouble))
