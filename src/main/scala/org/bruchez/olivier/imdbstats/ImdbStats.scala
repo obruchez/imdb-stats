@@ -48,10 +48,6 @@ object ImdbStats {
         val currentValue = yearCounts.getOrElse(yearToUpdate, 0.0)
         yearCounts.update(yearToUpdate, currentValue + weight)
       }
-
-      if (startYear > 2050 || startYear < 1890) {
-        println(s"*** $titleInfo")
-      }
     }
 
     for {
