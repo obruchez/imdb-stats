@@ -44,6 +44,12 @@ $durationStats
 
 Most durations above 1,000 minutes are mistakes, experimental videos, total durations for series, etc.
 
+Here are the statistics and frequency plot for feature films only:
+
+$movieDurationStats
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.movies.png" width="600">
+
 ### Ratings
 
 $titleWithRatingCount titles ($titleWithRatingPercentage) have ratings.

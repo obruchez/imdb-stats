@@ -13,3 +13,8 @@ set xtics 0,50,300
 
 set output 'duration-frequencies.300.png'
 plot 'duration-frequencies.300.tsv' using 1:2 with boxes
+
+set xtics 0,50,240
+
+set output 'duration-frequencies.movies.png'
+plot 'duration-frequencies.movies.tsv' using 1:2 with boxes

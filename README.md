@@ -63,6 +63,18 @@ The earliest title in IMDb is [The Passage of Venus ](http://www.imdb.com/title/
 
 Most durations above 1,000 minutes are mistakes, experimental videos, total durations for series, etc.
 
+Here are the statistics and frequency plot for feature films only:
+
+- count: 291,540
+- minimum: 1.00
+- maximum: 14,400.00
+- mean: 87.52
+- median: 88.00
+- mode: 90.00
+- standard deviation: 53.59
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.movies.png" width="600">
+
 ### Ratings
 
 786,561 titles (16.81%) have ratings.

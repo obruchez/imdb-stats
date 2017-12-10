@@ -45,6 +45,9 @@ object ImdbStats {
   lazy val titleDurations: Seq[Int] =
     titleInfos.flatMap(_.runtimeMinutes)
 
+  lazy val movieDurations: Seq[Int] =
+    titleInfos.filter(_.titleType == MovieType).flatMap(_.runtimeMinutes)
+
   private def titleYearsFromTitleInfos(titleInfos: Iterable[TitleInfo]): Iterable[Int] = {
     val yearCounts = collection.mutable.Map[Int, Double]()
 
