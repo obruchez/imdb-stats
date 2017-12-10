@@ -21,74 +21,6 @@ object ImdbStats {
     "tvShort" -> "TV short"
   )
 
-  // scalastyle:off
-  def test(): Unit = {
-    val ratingVoteCounts = this.titleRatings().map(_.voteCount).sorted
-
-    val minVoteCount = ratingVoteCounts.head
-    val maxVoteCount = ratingVoteCounts.last
-    val medianVoteCount = ratingVoteCounts(ratingVoteCounts.size / 2)
-    val averageVoteCount = ratingVoteCounts.sum.toDouble / ratingVoteCounts.size
-    val topFivePercentilCount = ratingVoteCounts(ratingVoteCounts.size * 95 / 100)
-
-    println(
-      s"Rating vote counts: min = $minVoteCount, max = $maxVoteCount, median = $medianVoteCount, average = $averageVoteCount")
-    println(s"topFivePercentilCount = $topFivePercentilCount")
-
-    val MinimumVoteCount = 10000
-
-    val ratingsById =
-      this.ratingsById(voteCountThreshold = Some(MinimumVoteCount))
-
-    println(s"Rating count ($MinimumVoteCount): ${ratingsById.size}")
-
-    val MinimumRuntimeInMinutes = 60
-
-    val filteredIds = this.filteredIds(titleInfo => {
-      titleInfo.titleType == MovieType &&
-      titleInfo.runtimeMinutes.exists(_ >= MinimumRuntimeInMinutes)
-    })
-
-    println(s"Filtered movie count: ${filteredIds.size}")
-
-    val filteredRatings = ratingsById.toSeq
-      .filter(kv => filteredIds.contains(kv._1))
-      .map(_._2)
-      .sorted
-
-    println(s"Filtered rating count: ${filteredRatings.size}")
-
-    val MovieThatICanWatchCount = 1290
-
-    val minimumImdbRating =
-      filteredRatings.takeRight(MovieThatICanWatchCount).head
-
-    val minimumImdbRatingMovieCount =
-      filteredRatings.count(_ >= minimumImdbRating)
-
-    println(s"Minimum IMDb rating: $minimumImdbRating (=> $minimumImdbRatingMovieCount movies)")
-
-    for (rating <- 70 to 100 by 1) {
-      val count = filteredRatings.count(_ >= rating)
-      println(s"Movie >= $rating count: $count")
-    }
-  }
-  // scalastyle:on
-
-  def filteredIds(f: TitleInfo => Boolean): Set[String] = {
-    val ids = collection.mutable.Set[String]()
-
-    FileUtils.fromTsvGz[Unit](Paths.get(BasicsFilename), row => {
-      val titleInfo = TitleInfo(row)
-      if (f(titleInfo)) {
-        ids.add(titleInfo.id)
-      }
-      None
-    })
-
-    ids.toSet
-  }
-
   def titleRatings(): Seq[TitleRating] =
     FileUtils.fromTsvGz[TitleRating](
       Paths.get(RatingsFilename),
@@ -101,13 +33,30 @@ object ImdbStats {
       row => Some(TitleInfo(row))
     )
 
-  // Rating * 10
-  def ratingsById(voteCountThreshold: Option[Int] = None): Map[String, Int] =
-    this
-      .titleRatings()
-      .filter { titleRating =>
-        voteCountThreshold.map(titleRating.voteCount >= _).getOrElse(true)
+  def titleYearsFromTitleInfos(titleInfos: Iterable[TitleInfo]): Iterable[Int] = {
+    val yearCounts = collection.mutable.Map[Int, Double]()
+
+    // The logic here is to distribute a weight of 1.0 over all the years in range [startYear, endYear]
+
+    for {
+      titleInfo <- titleInfos
+      startYear <- titleInfo.startYear orElse titleInfo.endYear
+      endYear <- titleInfo.endYear orElse titleInfo.startYear
+      weight = 1.0 / (endYear - startYear + 1.0)
+    } {
+      for (yearToUpdate <- startYear to endYear) {
+        val currentValue = yearCounts.getOrElse(yearToUpdate, 0.0)
+        yearCounts.update(yearToUpdate, currentValue + weight)
       }
-      .map(kv => kv.id -> kv.ratingMultipliedByTen)
-      .toMap
+
+      if (startYear > 2050 || startYear < 1890) {
+        println(s"*** $titleInfo")
+      }
+    }
+
+    for {
+      (year, count) <- yearCounts
+      value <- Seq.fill(count.round.toInt)(year)
+    } yield value
+  }
 }
