@@ -47,7 +47,7 @@ They can be partitioned into 10 different types:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/year-frequencies.2025.png" width="500">
 
-And, yes, [100 Years](http://www.imdb.com/title/tt5174640/) is planned for release in 2115.
+The earliest title in IMDb is [The Passage of Venus ](http://www.imdb.com/title/tt3155794/) (1874). And, yes, [100 Years](http://www.imdb.com/title/tt5174640/) is planned for release in 2115!
 
 ## Ratings
 
