@@ -59,7 +59,7 @@ The earliest title in IMDb is [The Passage of Venus ](http://www.imdb.com/title/
 - mode: 30.00
 - standard deviation: 116.67
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.500.png" width="600">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.300.png" width="600">
 
 Most durations above 1,000 minutes are mistakes, experimental videos, total durations for series, etc.
 
