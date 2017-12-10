@@ -85,7 +85,7 @@ object GenerateReadme {
     voteCountValuesAndStats.stats.asStrings(withCount = false).mkString("\n")
 
   def voteCountPercentages(): String = {
-    val minCounts = Seq(100, 1000, 10000, 50000, 100000, 500000, 1000000)
+    val minCounts = Seq(10, 100, 1000, 10000, 100000, 1000000)
 
     (for (minCount <- minCounts) yield {
       val counts = voteCountValuesAndStats.values.count(_ >= minCount)
@@ -95,12 +95,13 @@ object GenerateReadme {
 
   def titlesWithMostVotes(threshold: Int = 1000000): String =
     (for {
-      titleRating <- ImdbStats.titleRatings
+      (titleRating, index) <- ImdbStats.titleRatings
         .sortBy(_.voteCount)
         .reverse
         .takeWhile(_.voteCount >= threshold)
+        .zipWithIndex
       titleInfo = ImdbStats.titleInfosById(titleRating.id)
-    } yield {
-      f" - ${titleRating.voteCount}%,d votes: ['${titleInfo.primaryTitle}'](http://www.imdb.com/title/${titleRating.id}/)"
-    }).mkString("\n")
+      url = s"http://www.imdb.com/title/${titleRating.id}/"
+    } yield f" ${index + 1}. ${titleRating.voteCount}%,d votes: [${titleInfo.primaryTitle}]($url)")
+      .mkString("\n")
 }

@@ -63,4 +63,3 @@ $voteCountPercentages
 Here is a list of the titles with more than 1,000,000 votes:
 
 $titlesWithMostVotes
- 
