@@ -26,7 +26,7 @@ object GenerateReadme {
       "voteCountStats" -> voteCountStats(),
       "voteCountPercentages" -> voteCountPercentages(),
       "titlesWithMostVotes" -> titlesWithMostVotes(),
-      "minimumRatings" -> minimumRatings()
+      "minimumRatings" -> minimumRatings(ImdbStats.MovieType)
     )
     val updatedContents = withSubstitutions(templateContents, substitutions)
 
@@ -127,7 +127,14 @@ object GenerateReadme {
       f" ${index + 1}. ${titleRating.voteCount}%,d votes: [${titleInfo.primaryTitle}](${titleInfo.url})")
       .mkString("\n")
 
-  def minimumRatings(movieCount: Int = 1500): String = {
-    ""
+  def minimumRatings(titleType: String, titleCount: Int = 1500): String = {
+    val minVoteCounts = Seq(5, 10, 100, 1000, 10000, 100000)
+
+    (for {
+      minVoteCount <- minVoteCounts
+      minRating <- ImdbStats.minimumRatingsByTitleCount(titleType, minVoteCount).get(titleCount)
+    } yield {
+      f" - votes >= $minVoteCount%,d ⇒ rating >= $minRating%.2f"
+    }).mkString("\n")
   }
 }

@@ -2,8 +2,6 @@ package org.bruchez.olivier.imdbstats
 
 import java.nio.file.Paths
 
-import scala.annotation.tailrec
-
 object GeneratePlots {
   def main(args: Array[String]): Unit = {
     dumpRatingFrequencies(filename = "rating-frequencies.tsv")
@@ -15,6 +13,9 @@ object GeneratePlots {
 
     dumpMovieDurationFrequencies(filename = "duration-frequencies.movies.tsv",
                                  durationsFilter = _.filter(_ <= 240))
+
+    dumpShortDurationFrequencies(filename = "duration-frequencies.shorts.tsv",
+                                 durationsFilter = _.filter(_ <= 60))
 
     dumpRatingVoteCountFrequencies(filename = "rating-vote-count-frequencies.tsv",
                                    countsFilter = _.map(_.toDouble))
@@ -55,6 +56,12 @@ object GeneratePlots {
                                    durationsFilter: (Seq[Double]) => Seq[Double]): Unit =
     dumpFrequencies(filename,
                     durationsFilter(ImdbStats.movieDurations.map(_.toDouble)),
+                    intervalCount = 50)
+
+  def dumpShortDurationFrequencies(filename: String,
+                                   durationsFilter: (Seq[Double]) => Seq[Double]): Unit =
+    dumpFrequencies(filename,
+                    durationsFilter(ImdbStats.shortDurations.map(_.toDouble)),
                     intervalCount = 50)
 
   def dumpRatingVoteCountFrequencies(filename: String,
