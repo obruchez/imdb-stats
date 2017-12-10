@@ -75,6 +75,18 @@ Here are the statistics and frequency plot for feature films only:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.movies.png" width="600">
 
+For short films only:
+
+- count: 387,287
+- minimum: 0.00
+- maximum: 1,834.00
+- mean: 13.28
+- median: 11.00
+- mode: 10.00
+- standard deviation: 10.04
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.shorts.png" width="600">
+
 ### Ratings
 
 786,561 titles (16.81%) have ratings.
@@ -154,6 +166,10 @@ If you take into account only feature films with 100 votes or more:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.100.png" width="600">
 
-And now with 10000 votes or more:
+And now with 10,000 votes or more:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.10000.png" width="600">
+
+Example: let's say you only have the time to watch 1,500 feature film. These are the minimum ratings for various minimum vote counts:
+
+

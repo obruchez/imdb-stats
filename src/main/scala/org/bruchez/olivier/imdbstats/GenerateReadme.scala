@@ -19,12 +19,14 @@ object GenerateReadme {
         ImdbStats.titleInfos.size),
       "durationStats" -> durationStats(),
       "movieDurationStats" -> movieDurationStats(),
+      "shortDurationStats" -> shortDurationStats(),
       "titleWithRatingCount" -> titleWithRatingCount.asString,
       "titleWithRatingPercentage" -> titleWithRatingCount.asPercentage(ImdbStats.titleInfos.size),
       "ratingStats" -> ratingStats(),
       "voteCountStats" -> voteCountStats(),
       "voteCountPercentages" -> voteCountPercentages(),
-      "titlesWithMostVotes" -> titlesWithMostVotes()
+      "titlesWithMostVotes" -> titlesWithMostVotes(),
+      "minimumRatings" -> minimumRatings()
     )
     val updatedContents = withSubstitutions(templateContents, substitutions)
 
@@ -86,6 +88,11 @@ object GenerateReadme {
       .asStrings(withCount = true)
       .mkString("\n")
 
+  def shortDurationStats(): String =
+    ValuesAndStats(ImdbStats.shortDurations.map(_.toDouble)).stats
+      .asStrings(withCount = true)
+      .mkString("\n")
+
   lazy val titleWithRatingCount: Int = ImdbStats.titleRatings.size
 
   def ratingStats(): String =
@@ -119,4 +126,8 @@ object GenerateReadme {
     } yield
       f" ${index + 1}. ${titleRating.voteCount}%,d votes: [${titleInfo.primaryTitle}](${titleInfo.url})")
       .mkString("\n")
+
+  def minimumRatings(movieCount: Int = 1500): String = {
+    ""
+  }
 }

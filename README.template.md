@@ -50,6 +50,12 @@ $movieDurationStats
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.movies.png" width="600">
 
+For short films only:
+
+$shortDurationStats
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.shorts.png" width="600">
+
 ### Ratings
 
 $titleWithRatingCount titles ($titleWithRatingPercentage) have ratings.
@@ -92,6 +98,10 @@ If you take into account only feature films with 100 votes or more:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.100.png" width="600">
 
-And now with 10000 votes or more:
+And now with 10,000 votes or more:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.10000.png" width="600">
+
+Example: let's say you only have the time to watch 1,500 feature film. These are the minimum ratings for various minimum vote counts:
+
+$minimumRatings
