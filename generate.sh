@@ -20,6 +20,8 @@ gnuplot ../gnuplot/duration-frequencies.gnuplot
 
 gnuplot ../gnuplot/rating-vote-count-frequencies.gnuplot
 
+gnuplot ../gnuplot/minimum-ratings.gnuplot
+
 cd ..
 
 # Generate README.md
