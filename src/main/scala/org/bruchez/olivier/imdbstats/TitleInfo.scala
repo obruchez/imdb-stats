@@ -8,7 +8,9 @@ case class TitleInfo(id: String,
                      startYear: Option[Int],
                      endYear: Option[Int],
                      runtimeMinutes: Option[Int],
-                     genres: Seq[String])
+                     genres: Seq[String]) {
+  def url: String = s"http://www.imdb.com/title/$id/"
+}
 
 object TitleInfo {
   val NoValue = "\\N"

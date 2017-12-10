@@ -44,7 +44,7 @@ Titles can be partitioned into 10 different types:
 - mode: 2,016.00
 - standard deviation: 22.42
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/year-frequencies.2025.png" width="500">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/year-frequencies.2025.png" width="600">
 
 The earliest title in IMDb is [The Passage of Venus ](http://www.imdb.com/title/tt3155794/) (1874). And, yes, [100 Years](http://www.imdb.com/title/tt5174640/) is planned for release in 2115!
 
@@ -59,7 +59,7 @@ The earliest title in IMDb is [The Passage of Venus ](http://www.imdb.com/title/
 - mode: 30.00
 - standard deviation: 116.67
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.png" width="500">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.1000.png" width="600">
 
 ### Ratings
 
@@ -72,7 +72,7 @@ The earliest title in IMDb is [The Passage of Venus ](http://www.imdb.com/title/
 - mode: 7.20
 - standard deviation: 1.39
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-frequencies.png" width="500">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-frequencies.png" width="600">
 
 ### Vote counts
 
@@ -87,11 +87,11 @@ Each title with a rating has at least 5 votes (this is a limit enforced by IMDb)
 
 Most titles don't have much votes. The full frequency plot is not very useful:
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.png" width="500">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.png" width="600">
 
 If we zoom to 1,100 votes and less, we can see what's happening a little bit better:
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.95.png" width="500">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.95.png" width="600">
 
 About 95% of the titles with votes have 1,000 votes or less:
 

@@ -9,7 +9,7 @@ set style fill solid 1.0
 set xlabel "Duration (minutes)"
 set ylabel "Frequency"
 
-set xtics 1875,25,2125
+set xtics 0,50,1000
 
-set output 'duration-frequencies.png'
-plot 'duration-frequencies.tsv' using 1:2 with boxes
+set output 'duration-frequencies.1000.png'
+plot 'duration-frequencies.1000.tsv' using 1:2 with boxes

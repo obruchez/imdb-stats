@@ -75,10 +75,22 @@ object GenerateReadme {
 
   lazy val titleWithDurationCount: Int = ImdbStats.titleDurations.size
 
-  def durationStats(): String =
+  def durationStats(): String = {
+    /*ImdbStats.titleInfos
+      .filter(_.runtimeMinutes.isDefined)
+      .sortBy(_.runtimeMinutes)
+      .reverse
+      .take(200) foreach { titleInfo =>
+      if (titleInfo.runtimeMinutes.exists(_ > 1000)) {
+        println(
+          s"*** ${titleInfo.titleType}, ${titleInfo.runtimeMinutes.get} min -> ${titleInfo.url}")
+      }
+    }*/
+
     ValuesAndStats(ImdbStats.titleDurations.map(_.toDouble)).stats
       .asStrings(withCount = false)
       .mkString("\n")
+  }
 
   lazy val titleWithRatingCount: Int = ImdbStats.titleRatings.size
 
@@ -110,7 +122,7 @@ object GenerateReadme {
         .takeWhile(_.voteCount >= threshold)
         .zipWithIndex
       titleInfo = ImdbStats.titleInfosById(titleRating.id)
-      url = s"http://www.imdb.com/title/${titleRating.id}/"
-    } yield f" ${index + 1}. ${titleRating.voteCount}%,d votes: [${titleInfo.primaryTitle}]($url)")
+    } yield
+      f" ${index + 1}. ${titleRating.voteCount}%,d votes: [${titleInfo.primaryTitle}](${titleInfo.url})")
       .mkString("\n")
 }

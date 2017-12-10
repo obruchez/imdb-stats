@@ -30,7 +30,7 @@ $titleWithYearCount titles ($titleWithYearPercentage) have a start and/or end ye
 
 $yearStats
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/year-frequencies.2025.png" width="500">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/year-frequencies.2025.png" width="600">
 
 The earliest title in IMDb is [The Passage of Venus ](http://www.imdb.com/title/tt3155794/) (1874). And, yes, [100 Years](http://www.imdb.com/title/tt5174640/) is planned for release in 2115!
 
@@ -40,7 +40,7 @@ $titleWithDurationCount titles ($titleWithDurationPercentage) have a runtime dur
 
 $durationStats
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.png" width="500">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.1000.png" width="600">
 
 ### Ratings
 
@@ -48,7 +48,7 @@ $titleWithRatingCount titles ($titleWithRatingPercentage) have ratings.
 
 $ratingStats
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-frequencies.png" width="500">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-frequencies.png" width="600">
 
 ### Vote counts
 
@@ -58,11 +58,11 @@ $voteCountStats
 
 Most titles don't have much votes. The full frequency plot is not very useful:
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.png" width="500">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.png" width="600">
 
 If we zoom to 1,100 votes and less, we can see what's happening a little bit better:
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.95.png" width="500">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.95.png" width="600">
 
 About 95% of the titles with votes have 1,000 votes or less:
 
