@@ -89,7 +89,7 @@ object GenerateReadme {
 
     (for (minCount <- minCounts) yield {
       val counts = voteCountValuesAndStats.values.count(_ >= minCount)
-      f"- vote counts >= $minCount%,d: $counts%,d (${counts * 100.0 / voteCountValuesAndStats.values.size}%.2f%%)"
+      f"- votes >= $minCount%,d: $counts%,d (${counts * 100.0 / voteCountValuesAndStats.values.size}%.2f%%)"
     }).mkString("\n")
   }
 

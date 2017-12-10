@@ -82,12 +82,12 @@ If we zoom to 1,100 votes and less, we can see what's happening a little bit bet
 
 About 95% of the titles with votes have 1,000 votes or less:
 
-- vote counts >= 10: 569,717 (72.43%)
-- vote counts >= 100: 173,925 (22.11%)
-- vote counts >= 1,000: 41,822 (5.32%)
-- vote counts >= 10,000: 8,527 (1.08%)
-- vote counts >= 100,000: 1,602 (0.20%)
-- vote counts >= 1,000,000: 23 (0.00%)
+- votes >= 10: 569,717 (72.43%)
+- votes >= 100: 173,925 (22.11%)
+- votes >= 1,000: 41,822 (5.32%)
+- votes >= 10,000: 8,527 (1.08%)
+- votes >= 100,000: 1,602 (0.20%)
+- votes >= 1,000,000: 23 (0.00%)
 
 Here is a list of the titles with more than 1,000,000 votes:
 
@@ -114,4 +114,3 @@ Here is a list of the titles with more than 1,000,000 votes:
  21. 1,012,747 votes: [Star Wars: Episode IV - A New Hope](http://www.imdb.com/title/tt0076759/)
  22. 1,003,494 votes: [The Silence of the Lambs](http://www.imdb.com/title/tt0102926/)
  23. 1,001,780 votes: [Inglourious Basterds](http://www.imdb.com/title/tt0361748/)
- 
