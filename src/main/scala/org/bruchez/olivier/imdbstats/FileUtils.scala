@@ -53,4 +53,17 @@ object FileUtils {
       writer.close()
     }
   }
+
+  def writeString(path: Path, string: String): Unit = {
+    val writer = Files.newBufferedWriter(path)
+
+    try {
+      writer.write(string)
+    } finally {
+      writer.close()
+    }
+  }
+
+  def fileContents(path: Path): String =
+    scala.io.Source.fromFile(path.toFile).mkString
 }
