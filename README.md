@@ -4,25 +4,23 @@
 
 Computes statistics using IMDb dumps.
 
+## Scripts
+
 To download the IMDb dumps:
 
 ```download.sh <S3 key> <S3 password>```
 
-To generate the plots / PNG images:
+To compute the statistics, generate the plots / PNG images, and save the results into README.md:
 
 ```generate.sh```
 
-Generated plots / PNG images are stored in /results.
-
-To print statistics:
-
-```print.sh```
-
-## Titles
+## Statistics
 
 As of December 10, 2017, there are 4,678,063 titles in the IMDb dumps.
 
-They can be partitioned into 10 different types:
+### Title types
+
+Titles can be partitioned into 10 different types:
 
  - TV episode: 3,102,768
  - Short film: 594,612
@@ -35,9 +33,10 @@ They can be partitioned into 10 different types:
  - TV special: 10,399
  - TV short: 8,108
 
+### Years
+
 4,409,682 titles (94.26%) have a start and/or end year defined:
 
-- count: 4,409,679
 - minimum: 1,874.00
 - maximum: 2,115.00
 - mean: 1,999.18
@@ -49,11 +48,10 @@ They can be partitioned into 10 different types:
 
 The earliest title in IMDb is [The Passage of Venus ](http://www.imdb.com/title/tt3155794/) (1874). And, yes, [100 Years](http://www.imdb.com/title/tt5174640/) is planned for release in 2115!
 
-## Ratings
+### Ratings
 
 786,561 titles (16.81%) have ratings.
 
-- count: 786,561
 - minimum: 1.00
 - maximum: 10.00
 - mean: 6.94
@@ -63,11 +61,10 @@ The earliest title in IMDb is [The Passage of Venus ](http://www.imdb.com/title/
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-frequencies.png" width="500">
 
-## Vote counts
+### Vote counts
 
 Each title with a rating has at least 5 votes (this is a limit enforced by IMDb).
 
-- count: 786,561
 - minimum: 5.00
 - maximum: 1,884,541.00
 - mean: 993.97
@@ -95,27 +92,27 @@ About 95% of the titles with votes have 1,000 votes or less:
 
 Here is a list of the titles with more than 1,000,000 votes:
 
- - 1,884,541 votes: 'The Shawshank Redemption'
- - 1,860,469 votes: 'The Dark Knight'
- - 1,649,480 votes: 'Inception'
- - 1,510,460 votes: 'Fight Club'
- - 1,474,140 votes: 'Pulp Fiction'
- - 1,422,029 votes: 'Forrest Gump'
- - 1,366,914 votes: 'The Lord of the Rings: The Fellowship of the Ring'
- - 1,355,662 votes: 'The Matrix'
- - 1,346,670 votes: 'The Lord of the Rings: The Return of the King'
- - 1,286,635 votes: 'The Godfather'
- - 1,266,981 votes: 'The Dark Knight Rises'
- - 1,265,135 votes: 'Game of Thrones'
- - 1,218,915 votes: 'The Lord of the Rings: The Two Towers'
- - 1,149,297 votes: 'Se7en'
- - 1,116,105 votes: 'Interstellar'
- - 1,093,352 votes: 'Gladiator'
- - 1,087,730 votes: 'Batman Begins'
- - 1,084,819 votes: 'Django Unchained'
- - 1,074,638 votes: 'The Avengers'
- - 1,041,328 votes: 'Breaking Bad'
- - 1,012,747 votes: 'Star Wars: Episode IV - A New Hope'
- - 1,003,494 votes: 'The Silence of the Lambs'
- - 1,001,780 votes: 'Inglourious Basterds'
+ - 1,884,541 votes: ['The Shawshank Redemption'](http://www.imdb.com/title/tt0111161/)
+ - 1,860,469 votes: ['The Dark Knight'](http://www.imdb.com/title/tt0468569/)
+ - 1,649,480 votes: ['Inception'](http://www.imdb.com/title/tt1375666/)
+ - 1,510,460 votes: ['Fight Club'](http://www.imdb.com/title/tt0137523/)
+ - 1,474,140 votes: ['Pulp Fiction'](http://www.imdb.com/title/tt0110912/)
+ - 1,422,029 votes: ['Forrest Gump'](http://www.imdb.com/title/tt0109830/)
+ - 1,366,914 votes: ['The Lord of the Rings: The Fellowship of the Ring'](http://www.imdb.com/title/tt0120737/)
+ - 1,355,662 votes: ['The Matrix'](http://www.imdb.com/title/tt0133093/)
+ - 1,346,670 votes: ['The Lord of the Rings: The Return of the King'](http://www.imdb.com/title/tt0167260/)
+ - 1,286,635 votes: ['The Godfather'](http://www.imdb.com/title/tt0068646/)
+ - 1,266,981 votes: ['The Dark Knight Rises'](http://www.imdb.com/title/tt1345836/)
+ - 1,265,135 votes: ['Game of Thrones'](http://www.imdb.com/title/tt0944947/)
+ - 1,218,915 votes: ['The Lord of the Rings: The Two Towers'](http://www.imdb.com/title/tt0167261/)
+ - 1,149,297 votes: ['Se7en'](http://www.imdb.com/title/tt0114369/)
+ - 1,116,105 votes: ['Interstellar'](http://www.imdb.com/title/tt0816692/)
+ - 1,093,352 votes: ['Gladiator'](http://www.imdb.com/title/tt0172495/)
+ - 1,087,730 votes: ['Batman Begins'](http://www.imdb.com/title/tt0372784/)
+ - 1,084,819 votes: ['Django Unchained'](http://www.imdb.com/title/tt1853728/)
+ - 1,074,638 votes: ['The Avengers'](http://www.imdb.com/title/tt0848228/)
+ - 1,041,328 votes: ['Breaking Bad'](http://www.imdb.com/title/tt0903747/)
+ - 1,012,747 votes: ['Star Wars: Episode IV - A New Hope'](http://www.imdb.com/title/tt0076759/)
+ - 1,003,494 votes: ['The Silence of the Lambs'](http://www.imdb.com/title/tt0102926/)
+ - 1,001,780 votes: ['Inglourious Basterds'](http://www.imdb.com/title/tt0361748/)
  

@@ -21,17 +21,20 @@ object ImdbStats {
     "tvShort" -> "TV short"
   )
 
-  def titleRatings(): Seq[TitleRating] =
+  lazy val titleRatings: Seq[TitleRating] =
     FileUtils.fromTsvGz[TitleRating](
       Paths.get(RatingsFilename),
       row => Some(TitleRating(row))
     )
 
-  def titleInfos(): Seq[TitleInfo] =
+  lazy val titleInfos: Seq[TitleInfo] =
     FileUtils.fromTsvGz[TitleInfo](
       Paths.get(BasicsFilename),
       row => Some(TitleInfo(row))
     )
+
+  lazy val titleInfosById: Map[String, TitleInfo] =
+    titleInfos.groupBy(_.id).map(kv => kv._1 -> kv._2.head)
 
   def titleYearsFromTitleInfos(titleInfos: Iterable[TitleInfo]): Iterable[Int] = {
     val yearCounts = collection.mutable.Map[Int, Double]()

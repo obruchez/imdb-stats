@@ -2,6 +2,7 @@ package org.bruchez.olivier.imdbstats
 
 import java.io.{BufferedReader, FileInputStream, InputStreamReader}
 import java.nio.file._
+import java.util.Date
 import java.util.zip.GZIPInputStream
 
 import com.univocity.parsers.common.ParsingContext
@@ -66,4 +67,7 @@ object FileUtils {
 
   def fileContents(path: Path): String =
     scala.io.Source.fromFile(path.toFile).mkString
+
+  def lastModifiedDate(path: Path): Date =
+    Date.from(Files.getLastModifiedTime(path).toInstant)
 }

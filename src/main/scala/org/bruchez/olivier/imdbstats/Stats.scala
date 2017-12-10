@@ -9,15 +9,15 @@ case class Stats(sampleCount: Int,
                  standardDeviation: Double) {
   val range: Double = max - min
 
-  def asStrings: Seq[String] = Seq(
-    f"- count: $sampleCount%,d",
-    f"- minimum: $min%,.2f",
-    f"- maximum: $max%,.2f",
-    f"- mean: $mean%,.2f",
-    f"- median: $median%,.2f",
-    f"- mode: $mode%,.2f",
-    f"- standard deviation: $standardDeviation%,.2f"
-  )
+  def asStrings(withCount: Boolean): Seq[String] =
+    (if (withCount) Seq(f"- count: $sampleCount%,d") else Seq()) ++ Seq(
+      f"- minimum: $min%,.2f",
+      f"- maximum: $max%,.2f",
+      f"- mean: $mean%,.2f",
+      f"- median: $median%,.2f",
+      f"- mode: $mode%,.2f",
+      f"- standard deviation: $standardDeviation%,.2f"
+    )
 }
 
 object Stats {

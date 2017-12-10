@@ -23,9 +23,7 @@ object GeneratePlots {
   def dumpRatingFrequencies(filename: String, ratingsFilter: (Seq[Double]) => Seq[Double]): Unit = {
     val IntervalCount = 40
 
-    val titleRatings = ImdbStats.titleRatings()
-
-    val valuesAndStats = ValuesAndStats(ratingsFilter(titleRatings.map(_.rating)))
+    val valuesAndStats = ValuesAndStats(ratingsFilter(ImdbStats.titleRatings.map(_.rating)))
 
     valuesAndStats.dumpFrequenciesToGnuplotFile(Paths.get(filename), intervalCount = IntervalCount)
   }
@@ -33,11 +31,10 @@ object GeneratePlots {
   def dumpYearFrequencies(filename: String, yearsFilter: (Seq[Double]) => Seq[Double]): Unit = {
     val IntervalCount = 50
 
-    val titleInfos = ImdbStats.titleInfos()
-
     val valuesAndStats =
       ValuesAndStats(
-        yearsFilter(ImdbStats.titleYearsFromTitleInfos(titleInfos).toSeq.map(_.toDouble)))
+        yearsFilter(
+          ImdbStats.titleYearsFromTitleInfos(ImdbStats.titleInfos).toSeq.map(_.toDouble)))
 
     valuesAndStats.dumpFrequenciesToGnuplotFile(Paths.get(filename), intervalCount = IntervalCount)
   }
@@ -46,9 +43,7 @@ object GeneratePlots {
                                      countsFilter: (Seq[Int]) => Seq[Double]): Unit = {
     val IntervalCount = 30
 
-    val titleRatings = ImdbStats.titleRatings()
-
-    val valuesAndStats = ValuesAndStats(countsFilter(titleRatings.map(_.voteCount)))
+    val valuesAndStats = ValuesAndStats(countsFilter(ImdbStats.titleRatings.map(_.voteCount)))
 
     valuesAndStats.dumpFrequenciesToGnuplotFile(Paths.get(filename), intervalCount = IntervalCount)
   }
