@@ -26,7 +26,7 @@ object TitleInfo {
       isAdult = strings(4).toInt != 0,
       startYear = Some(strings(5)).filter(_ != NoValue).map(_.toInt),
       endYear = Some(strings(6)).filter(_ != NoValue).map(_.toInt),
-      runtimeMinutes = Some(strings(7)).filter(_ != NoValue).map(_.toInt),
+      runtimeMinutes = Some(strings(7)).filter(_ != NoValue).map(_.toInt).filter(_ > 0),
       genres = strings(8).split(',').map(_.trim)
     )
   }

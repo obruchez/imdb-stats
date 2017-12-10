@@ -50,11 +50,11 @@ The earliest title in IMDb is [The Passage of Venus ](http://www.imdb.com/title/
 
 ### Durations
 
-1,440,906 titles (30.80%) have a runtime duration defined:
+1,440,883 titles (30.80%) have a runtime duration defined:
 
-- minimum: 0.00
+- minimum: 1.00
 - maximum: 125,156.00
-- mean: 46.80
+- mean: 46.81
 - median: 30.00
 - mode: 30.00
 - standard deviation: 116.67
@@ -77,8 +77,8 @@ Here are the statistics and frequency plot for feature films only:
 
 For short films only:
 
-- count: 387,287
-- minimum: 0.00
+- count: 387,277
+- minimum: 1.00
 - maximum: 1,834.00
 - mean: 13.28
 - median: 11.00
@@ -86,6 +86,8 @@ For short films only:
 - standard deviation: 10.04
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.shorts.png" width="600">
+
+There is some overlap between the short films and feature films. I'm not sure it totally makes sense (e.g. a feature film shorter than 10 minutes or a short film longer than X minutes?).
 
 ### Ratings
 

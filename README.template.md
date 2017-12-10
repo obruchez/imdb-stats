@@ -56,6 +56,8 @@ $shortDurationStats
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.shorts.png" width="600">
 
+There is some overlap between the short films and feature films. I'm not sure it totally makes sense (e.g. a feature film shorter than 10 minutes or a short film longer than 100 minutes?).
+
 ### Ratings
 
 $titleWithRatingCount titles ($titleWithRatingPercentage) have ratings.
