@@ -14,6 +14,10 @@ object GenerateReadme {
       "titleWithYearCount" -> titleWithYearCount.asString,
       "titleWithYearPercentage" -> titleWithYearCount.asPercentage(ImdbStats.titleInfos.size),
       "yearStats" -> yearStats(),
+      "titleWithDurationCount" -> titleWithDurationCount.asString,
+      "titleWithDurationPercentage" -> titleWithDurationCount.asPercentage(
+        ImdbStats.titleInfos.size),
+      "durationStats" -> durationStats(),
       "titleWithRatingCount" -> titleWithRatingCount.asString,
       "titleWithRatingPercentage" -> titleWithRatingCount.asPercentage(ImdbStats.titleInfos.size),
       "ratingStats" -> ratingStats(),
@@ -49,7 +53,7 @@ object GenerateReadme {
 
   def titleTypesWithCounts(): String = {
     val titleTypesAndCounts =
-      ImdbStats.titleInfosById.values
+      ImdbStats.titleInfos
         .groupBy(_.titleType)
         .map(kv => kv._1 -> kv._2.size)
         .toSeq
@@ -60,16 +64,21 @@ object GenerateReadme {
       yield f" - ${ImdbStats.titleTypeDescriptions(titleType)}: $titleCounts%,d").mkString("\n")
   }
 
-  lazy val titleWithYearCount: Int = ImdbStats.titleInfosById.values.count { titleInfo =>
+  lazy val titleWithYearCount: Int = ImdbStats.titleInfos.count { titleInfo =>
     titleInfo.startYear.isDefined || titleInfo.endYear.isDefined
   }
 
   def yearStats(): String =
-    ValuesAndStats(
-      ImdbStats
-        .titleYearsFromTitleInfos(ImdbStats.titleInfosById.values)
-        .toSeq
-        .map(_.toDouble)).stats.asStrings(withCount = false).mkString("\n")
+    ValuesAndStats(ImdbStats.titleYears.map(_.toDouble)).stats
+      .asStrings(withCount = false)
+      .mkString("\n")
+
+  lazy val titleWithDurationCount: Int = ImdbStats.titleDurations.size
+
+  def durationStats(): String =
+    ValuesAndStats(ImdbStats.titleDurations.map(_.toDouble)).stats
+      .asStrings(withCount = false)
+      .mkString("\n")
 
   lazy val titleWithRatingCount: Int = ImdbStats.titleRatings.size
 

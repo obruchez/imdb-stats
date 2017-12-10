@@ -34,6 +34,14 @@ $yearStats
 
 The earliest title in IMDb is [The Passage of Venus ](http://www.imdb.com/title/tt3155794/) (1874). And, yes, [100 Years](http://www.imdb.com/title/tt5174640/) is planned for release in 2115!
 
+### Durations
+
+$titleWithDurationCount titles ($titleWithDurationPercentage) have a runtime duration defined:
+
+$durationStats
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.png" width="500">
+
 ### Ratings
 
 $titleWithRatingCount titles ($titleWithRatingPercentage) have ratings.

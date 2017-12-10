@@ -36,7 +36,13 @@ object ImdbStats {
   lazy val titleInfosById: Map[String, TitleInfo] =
     titleInfos.groupBy(_.id).map(kv => kv._1 -> kv._2.head)
 
-  def titleYearsFromTitleInfos(titleInfos: Iterable[TitleInfo]): Iterable[Int] = {
+  lazy val titleYears: Seq[Int] =
+    titleYearsFromTitleInfos(titleInfos).toSeq
+
+  lazy val titleDurations: Seq[Int] =
+    titleInfos.flatMap(_.runtimeMinutes)
+
+  private def titleYearsFromTitleInfos(titleInfos: Iterable[TitleInfo]): Iterable[Int] = {
     val yearCounts = collection.mutable.Map[Int, Double]()
 
     // The logic here is to distribute a weight of 1.0 over all the years in range [startYear, endYear]

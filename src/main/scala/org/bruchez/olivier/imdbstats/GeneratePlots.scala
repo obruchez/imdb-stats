@@ -4,9 +4,11 @@ import java.nio.file.Paths
 
 object GeneratePlots {
   def main(args: Array[String]): Unit = {
-    dumpRatingFrequencies(filename = "rating-frequencies.tsv", ratingsFilter = ratings => ratings)
+    dumpRatingFrequencies(filename = "rating-frequencies.tsv", ratingsFilter = identity)
 
     dumpYearFrequencies(filename = "year-frequencies.2025.tsv", yearsFilter = _.filter(_ <= 2025))
+
+    dumpDurationFrequencies(filename = "duration-frequencies.tsv", durationsFilter = identity)
 
     dumpRatingVoteCountFrequencies(filename = "rating-vote-count-frequencies.tsv",
                                    countsFilter = _.map(_.toDouble))
@@ -31,10 +33,16 @@ object GeneratePlots {
   def dumpYearFrequencies(filename: String, yearsFilter: (Seq[Double]) => Seq[Double]): Unit = {
     val IntervalCount = 50
 
-    val valuesAndStats =
-      ValuesAndStats(
-        yearsFilter(
-          ImdbStats.titleYearsFromTitleInfos(ImdbStats.titleInfos).toSeq.map(_.toDouble)))
+    val valuesAndStats = ValuesAndStats(yearsFilter(ImdbStats.titleYears.map(_.toDouble)))
+
+    valuesAndStats.dumpFrequenciesToGnuplotFile(Paths.get(filename), intervalCount = IntervalCount)
+  }
+
+  def dumpDurationFrequencies(filename: String,
+                              durationsFilter: (Seq[Double]) => Seq[Double]): Unit = {
+    val IntervalCount = 50
+
+    val valuesAndStats = ValuesAndStats(durationsFilter(ImdbStats.titleDurations.map(_.toDouble)))
 
     valuesAndStats.dumpFrequenciesToGnuplotFile(Paths.get(filename), intervalCount = IntervalCount)
   }

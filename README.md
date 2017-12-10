@@ -48,6 +48,19 @@ Titles can be partitioned into 10 different types:
 
 The earliest title in IMDb is [The Passage of Venus ](http://www.imdb.com/title/tt3155794/) (1874). And, yes, [100 Years](http://www.imdb.com/title/tt5174640/) is planned for release in 2115!
 
+### Durations
+
+1,440,906 titles (30.80%) have a runtime duration defined:
+
+- minimum: 0.00
+- maximum: 125,156.00
+- mean: 46.80
+- median: 30.00
+- mode: 30.00
+- standard deviation: 116.67
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.png" width="500">
+
 ### Ratings
 
 786,561 titles (16.81%) have ratings.

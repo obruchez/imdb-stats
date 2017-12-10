@@ -16,6 +16,8 @@ gnuplot ../gnuplot/rating-frequencies.gnuplot
 
 gnuplot ../gnuplot/year-frequencies.gnuplot
 
+gnuplot ../gnuplot/duration-frequencies.gnuplot
+
 gnuplot ../gnuplot/rating-vote-count-frequencies.gnuplot
 
 cd ..
