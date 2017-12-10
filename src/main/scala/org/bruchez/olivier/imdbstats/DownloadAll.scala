@@ -3,7 +3,7 @@ package org.bruchez.olivier.imdbstats
 import java.io.{FileOutputStream, InputStream}
 
 import com.amazonaws.{AmazonClientException, AmazonServiceException}
-import com.amazonaws.auth.{AWSStaticCredentialsProvider, BasicAWSCredentials}
+import com.amazonaws.auth.{AWSCredentials, AWSCredentialsProvider, BasicAWSCredentials}
 import com.amazonaws.services.s3.AmazonS3Client
 import com.amazonaws.services.s3.model.GetObjectRequest
 
@@ -13,8 +13,11 @@ object DownloadAll {
   private val bucketName = "imdb-datasets"
 
   def main(args: Array[String]): Unit = {
-    val credentialsProvider = new AWSStaticCredentialsProvider(
-      new BasicAWSCredentials(args(0), args(1)))
+    val credentialsProvider = new AWSCredentialsProvider {
+      override def getCredentials: AWSCredentials = new BasicAWSCredentials(args(0), args(1))
+
+      override def refresh(): Unit = ()
+    }
 
     val s3Client = new AmazonS3Client(credentialsProvider)
 
