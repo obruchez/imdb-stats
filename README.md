@@ -172,10 +172,21 @@ And now with 10,000 votes or more:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.10000.png" width="600">
 
-Example: let's say you only have the time to watch 1,500 feature films. These are the minimum ratings for various minimum number of votes:
+Example 1. Let's say you only have the time to watch 1,500 feature films. These are the minimum ratings for various minimum number of votes:
 
  - votes >= 5 ⇒ rating >= 9.20
  - votes >= 10 ⇒ rating >= 9.00
  - votes >= 100 ⇒ rating >= 8.20
  - votes >= 1,000 ⇒ rating >= 8.10
  - votes >= 10,000 ⇒ rating >= 7.70
+ - votes >= 25,000 ⇒ rating >= 7.30
+
+Example 2. What about 250 feature films?
+
+ - votes >= 5 ⇒ rating >= 9.70
+ - votes >= 10 ⇒ rating >= 9.50
+ - votes >= 100 ⇒ rating >= 8.80
+ - votes >= 1,000 ⇒ rating >= 8.60
+ - votes >= 10,000 ⇒ rating >= 8.30
+ - votes >= 25,000 ⇒ rating >= 8.20
+ - votes >= 100,000 ⇒ rating >= 8.10
