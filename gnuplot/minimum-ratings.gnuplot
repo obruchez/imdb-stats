@@ -36,3 +36,11 @@ plot 'minimum-ratings.5.tsv' using 1:2 with lines title "5 votes", \
      'minimum-ratings.100.tsv' using 1:2 with lines title "100 votes", \
      'minimum-ratings.1000.tsv' using 1:2 with lines title "1,000 votes", \
      'minimum-ratings.10000.tsv' using 1:2 with lines title "10,000 votes"
+
+set xtics 0,500,5000
+set output 'minimum-ratings.all.5000.png'
+plot [0:5000] 'minimum-ratings.5.tsv' using 1:2 with lines title "5 votes", \
+              'minimum-ratings.10.tsv' using 1:2 with lines title "10 votes", \
+              'minimum-ratings.100.tsv' using 1:2 with lines title "100 votes", \
+              'minimum-ratings.1000.tsv' using 1:2 with lines title "1,000 votes", \
+              'minimum-ratings.10000.tsv' using 1:2 with lines title "10,000 votes"

@@ -112,6 +112,12 @@ If you put all the plots on the same image, it becomes clear in what way the min
 
 The higher the number of votes, the lower the number of feature films there are with that many votes. In other words, you can be less strict/conservative about the minimum rating with movies that have lots of votes.
 
+But let's be honest, shall we? You probably won't see more than 5,000 feature films in your entire life, unless you're a movie buff. So let's zoom a little:
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.all.5000.png" width="600">
+
+At this scale, if becomes clear that the minimum number of votes becomes less important: the minimum rating doesn't go all the way down to 1; actually, it doesn't even go below 7.5 for most plots and doesn't go below ~6.5 for all of them. It appears that it's probably a good idea to stay clear of feature films with a rating lower than 7 or 8, depending on the number of films.
+
 Example 1. Let's say you only have the time to watch 1,500 feature films. These are the minimum ratings for various minimum number of votes:
 
 $minimumRatings(1500)
