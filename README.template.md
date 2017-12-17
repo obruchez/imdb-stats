@@ -80,13 +80,21 @@ If we zoom to 1,100 votes and less, we can see what's happening a little bit bet
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.95.png" width="600">
 
-About 95% of the titles with votes have 1,000 votes or less:
+95% of the titles with votes are in that area (i.e. about 1,100 votes and less):
 
 $voteCountPercentages
 
 Here is a list of the titles with more than 1,000,000 votes:
 
 $titlesWithMostVotes
+
+Most (but not all) of those titles are feature films. The mean/median numbers of votes for feature films are greater than the mean/median numbers of votes for all titles:
+
+$movieVoteCountStats
+
+But the plot still doesn't look like a bell curve:
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.movies.png" width="600">
 
 ### Minimum ratings
 

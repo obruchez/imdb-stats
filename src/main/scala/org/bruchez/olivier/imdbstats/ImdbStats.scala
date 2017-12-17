@@ -38,7 +38,6 @@ object ImdbStats {
       Paths.get(BasicsFilename),
       row => Some(TitleInfo(row))
     )
-
   lazy val titleInfosById: Map[String, TitleInfo] =
     titleInfos.groupBy(_.id).map(kv => kv._1 -> kv._2.head)
 
@@ -53,6 +52,9 @@ object ImdbStats {
 
   lazy val shortDurations: Seq[Int] =
     titleInfos.filter(_.titleType == ShortType).flatMap(_.runtimeMinutes)
+
+  lazy val movieTitleRatings: Seq[TitleRating] =
+    titleInfos.filter(_.titleType == MovieType).map(_.id).flatMap(titleRatingsById.get)
 
   private def titleYearsFromTitleInfos(titleInfos: Iterable[TitleInfo]): Iterable[Int] = {
     val yearCounts = collection.mutable.Map[Int, Double]()

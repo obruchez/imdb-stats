@@ -24,6 +24,7 @@ object GenerateReadme {
       "titleWithRatingPercentage" -> titleWithRatingCount.asPercentage(ImdbStats.titleInfos.size),
       "ratingStats" -> ratingStats(),
       "voteCountStats" -> voteCountStats(),
+      "movieVoteCountStats" -> movieVoteCountStats(),
       "voteCountPercentages" -> voteCountPercentages(),
       "titlesWithMostVotes" -> titlesWithMostVotes(),
       "minimumRatings(1500)" -> minimumRatings(ImdbStats.MovieType, titleCount = 1500),
@@ -108,6 +109,12 @@ object GenerateReadme {
 
   def voteCountStats(): String =
     voteCountValuesAndStats.stats.asStrings(withCount = false).mkString("\n")
+
+  lazy val movieVoteCountValuesAndStats: ValuesAndStats =
+    ValuesAndStats(ImdbStats.movieTitleRatings.map(_.voteCount.toDouble))
+
+  def movieVoteCountStats(): String =
+    movieVoteCountValuesAndStats.stats.asStrings(withCount = false).mkString("\n")
 
   def voteCountPercentages(): String = {
     val minCounts = Seq(10, 100, 1000, 10000, 100000, 1000000)

@@ -28,6 +28,11 @@ object GeneratePlots {
     dumpRatingVoteCountFrequencies(filename = "rating-vote-count-frequencies.log10.tsv",
                                    countsFilter = _.map(count => math.log10(count)))
 
+    dumpMovieRatingVoteCountFrequencies(filename = "rating-vote-count-frequencies.movies.tsv",
+                                        countsFilter = counts => {
+                                          counts.sorted.takeWhile(_ <= 1100).map(_.toDouble)
+                                        })
+
     for (voteCount <- Seq(5, 10, 100, 1000, 10000)) {
       dumpMinimumRatings(filename = s"minimum-ratings.$voteCount.tsv",
                          titleType = ImdbStats.MovieType,
@@ -68,6 +73,12 @@ object GeneratePlots {
                                      countsFilter: (Seq[Int]) => Seq[Double]): Unit =
     dumpFrequencies(filename,
                     countsFilter(ImdbStats.titleRatings.map(_.voteCount)),
+                    intervalCount = 30)
+
+  def dumpMovieRatingVoteCountFrequencies(filename: String,
+                                          countsFilter: (Seq[Int]) => Seq[Double]): Unit =
+    dumpFrequencies(filename,
+                    countsFilter(ImdbStats.movieTitleRatings.map(_.voteCount)),
                     intervalCount = 30)
 
   def dumpMinimumRatings(filename: String, titleType: String, voteCount: Int): Unit = {

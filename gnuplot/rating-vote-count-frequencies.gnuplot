@@ -19,6 +19,11 @@ set xtics 0,100,1100
 set output 'rating-vote-count-frequencies.95.png'
 plot 'rating-vote-count-frequencies.95.tsv' using 1:2 with boxes
 
+set xtics 0,100,1100
+
+set output 'rating-vote-count-frequencies.movies.png'
+plot 'rating-vote-count-frequencies.movies.tsv' using 1:2 with boxes
+
 set xlabel "log_{10}(vote count)"
 
 set xtics 0,1,7

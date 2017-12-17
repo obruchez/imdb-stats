@@ -121,7 +121,7 @@ If we zoom to 1,100 votes and less, we can see what's happening a little bit bet
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.95.png" width="600">
 
-About 95% of the titles with votes have 1,000 votes or less:
+95% of the titles with votes are in that area (i.e. about 1,100 votes and less):
 
 - votes >= 10: 570,833 (72.41%)
 - votes >= 100: 174,286 (22.11%)
@@ -155,6 +155,19 @@ Here is a list of the titles with more than 1,000,000 votes:
  21. 1,015,564 votes: [Star Wars: Episode IV - A New Hope](http://www.imdb.com/title/tt0076759/)
  22. 1,005,064 votes: [The Silence of the Lambs](http://www.imdb.com/title/tt0102926/)
  23. 1,003,465 votes: [Inglourious Basterds](http://www.imdb.com/title/tt0361748/)
+
+Most (but not all) of those titles are feature films. The mean/median numbers of votes for feature films are greater than the mean/median numbers of votes for all titles:
+
+- minimum: 5.00
+- maximum: 1,887,261.00
+- mean: 3,106.97
+- median: 44.00
+- mode: 5.00
+- standard deviation: 28,466.50
+
+But the plot still doesn't look like a bell curve:
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.movies.png" width="600">
 
 ### Minimum ratings
 
