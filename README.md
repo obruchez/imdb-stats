@@ -61,7 +61,7 @@ The earliest title in IMDb is [The Passage of Venus ](http://www.imdb.com/title/
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.300.png" width="600">
 
-Most durations above 1,000 minutes are mistakes, experimental videos, total durations for series, etc.
+Most durations above 1,000 minutes are experimental videos, total durations for series, mistakes, etc.
 
 Here are the statistics and frequency plot for feature films only:
 
@@ -178,7 +178,7 @@ If you put all the plots on the same image, it becomes clear in what way the min
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.all.png" width="600">
 
-The higher the number of votes, the lower the number of feature films with that many votes. In other words, you can be less strict/conservative about the minimum rating with movies with lots of votes.
+The higher the number of votes, the lower the number of feature films there are with that many votes. In other words, you can be less strict/conservative about the minimum rating with movies that have lots of votes.
 
 Example 1. Let's say you only have the time to watch 1,500 feature films. These are the minimum ratings for various minimum number of votes:
 
