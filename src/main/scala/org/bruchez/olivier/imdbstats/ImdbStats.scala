@@ -79,7 +79,9 @@ object ImdbStats {
     } yield value
   }
 
-  def minimumRatingsByTitleCount(titleType: String, voteCount: Int): Map[Int, Double] = {
+  def minimumRatingsByTitleCount(titleType: String,
+                                 voteCount: Int,
+                                 maxTitleCountOption: Option[Int] = None): Map[Int, Double] = {
     val sortedRatings = (for {
       titleInfo <- titleInfos
       if titleInfo.titleType == titleType
@@ -96,7 +98,7 @@ object ImdbStats {
     def titleCountsAndRatings(remainingRatings: Seq[Double],
                               acc: Seq[(Int, Double)] = Seq(),
                               previousRatingOption: Option[Double] = None): Seq[(Int, Double)] =
-      if (remainingRatings.isEmpty) {
+      if (remainingRatings.isEmpty || maxTitleCountOption.exists(_ <= acc.size)) {
         acc
       } else {
         val rating = remainingRatings.head
@@ -112,4 +114,16 @@ object ImdbStats {
 
     titleCountsAndRatings(sortedRatings).toMap
   }
+
+  def minimumRatingsByVoteCount(titleType: String,
+                                titleCount: Int,
+                                maxVoteCount: Int,
+                                step: Int): Map[Int, Double] =
+    (5 to maxVoteCount by step)
+      .flatMap(
+        voteCount =>
+          minimumRatingsByTitleCount(titleType, voteCount, maxTitleCountOption = Some(titleCount))
+            .get(titleCount)
+            .map(voteCount -> _))
+      .toMap
 }

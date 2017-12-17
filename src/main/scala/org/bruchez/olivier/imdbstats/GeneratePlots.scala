@@ -34,9 +34,15 @@ object GeneratePlots {
                                         })
 
     for (voteCount <- Seq(5, 10, 100, 1000, 10000)) {
-      dumpMinimumRatings(filename = s"minimum-ratings.$voteCount.tsv",
-                         titleType = ImdbStats.MovieType,
-                         voteCount = voteCount)
+      dumpMinimumRatingsForVoteCount(filename = s"minimum-ratings.${voteCount}votes.tsv",
+                                     titleType = ImdbStats.MovieType,
+                                     voteCount = voteCount)
+    }
+
+    for (titleCount <- Seq(250, 1500)) {
+      dumpMinimumRatingsForTitleCount(filename = s"minimum-ratings.${titleCount}movies.tsv",
+                                      titleType = ImdbStats.MovieType,
+                                      titleCount = titleCount)
     }
   }
 
@@ -81,11 +87,22 @@ object GeneratePlots {
                     countsFilter(ImdbStats.movieTitleRatings.map(_.voteCount)),
                     intervalCount = 30)
 
-  def dumpMinimumRatings(filename: String, titleType: String, voteCount: Int): Unit = {
+  def dumpMinimumRatingsForVoteCount(filename: String, titleType: String, voteCount: Int): Unit = {
     val titleCountsAndRatings =
       ImdbStats.minimumRatingsByTitleCount(titleType, voteCount).toSeq.sortBy(_._1)
 
     FileUtils.writeStrings(Paths.get(filename),
                            titleCountsAndRatings.map(kv => s"${kv._1}\t${kv._2}"))
+  }
+
+  def dumpMinimumRatingsForTitleCount(filename: String, titleType: String, titleCount: Int): Unit = {
+    val voteCountsAndRatings =
+      ImdbStats
+        .minimumRatingsByVoteCount(titleType, titleCount, maxVoteCount = 30000, step = 500)
+        .toSeq
+        .sortBy(_._1)
+
+    FileUtils.writeStrings(Paths.get(filename),
+                           voteCountsAndRatings.map(kv => s"${kv._1}\t${kv._2}"))
   }
 }

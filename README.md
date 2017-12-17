@@ -175,27 +175,27 @@ Question: what's the minimum IMDb rating for a feature film that you should watc
 
 Here's the plot if you take into account all feature films with ratings:
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.5.png" width="600">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.5votes.png" width="600">
 
 If you take into account only feature films with 100 votes or more:
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.100.png" width="600">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.100votes.png" width="600">
 
 And now with 10,000 votes or more:
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.10000.png" width="600">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.10000votes.png" width="600">
 
 All the plots have the same shape: the more films you take, the less you have to be strict/conservative about the minimum rating. It makes complete sense.
 
 If you put all the plots on the same image, it becomes clear in what way the minimum number of votes influences the minimum rating:
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.all.png" width="600">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.multiplevotecounts.png" width="600">
 
 The higher the number of votes, the lower the number of feature films there are with that many votes. In other words, you can be less strict/conservative about the minimum rating with movies that have lots of votes.
 
 But let's be honest, shall we? You probably won't see more than 5,000 feature films in your entire life, unless you're a movie buff. So let's zoom a little:
 
-<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.all.5000.png" width="600">
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.multiplevotecounts.5000movies.png" width="600">
 
 At this scale, if becomes clear that the minimum number of votes becomes less important: the minimum rating doesn't go all the way down to 1; actually, it doesn't even go below 7.5 for most plots and doesn't go below ~6.5 for all of them. It appears that it's probably a good idea to stay clear of feature films with a rating lower than 7 or 8, depending on the number of films.
 
@@ -209,6 +209,8 @@ Example 1. Let's say you only have the time to watch 1,500 feature films. These 
  - votes >= 25,000 ⇒ rating >= 7.30
  - votes >= 100,000 ⇒ rating >= 4.10
 
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.1500movies.png" width="600">
+
 Example 2. What about 250 feature films?
 
  - votes >= 5 ⇒ rating >= 9.70
@@ -218,5 +220,7 @@ Example 2. What about 250 feature films?
  - votes >= 10,000 ⇒ rating >= 8.30
  - votes >= 25,000 ⇒ rating >= 8.20
  - votes >= 100,000 ⇒ rating >= 8.10
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.250movies.png" width="600">
 
 At the time of writing, all the movies in the [IMDb Top 250](http://www.imdb.com/chart/top) have more than 25,000 votes and a rating of 8.0 or more. If I had to guess, I would have given a minimum rating of 8.1 for a maximum of 250 movies to watch and a minimum of 25'000 votes. The discrepancy probably comes from the fact that "only votes from regular IMDb voters are considered when creating the top 250 out of the full voting database". I have no way of knowing which vote comes from "regular IMDb voters". This information is not included in the IMDb dumps.
