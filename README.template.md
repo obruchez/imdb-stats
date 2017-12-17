@@ -104,6 +104,14 @@ And now with 10,000 votes or more:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.10000.png" width="600">
 
+All the plots have the same shape: the more films you take, the less you have to be strict/conservative about the minimum rating. It makes complete sense.
+
+If you put all the plots on the same image, it becomes clear in what way the minimum number of votes influences the minimum rating:
+
+<img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.all.png" width="600">
+
+The higher the number of votes, the lower the number of feature films with that many votes. In other words, you can be less strict/conservative about the minimum rating with movies with lots of votes.
+
 Example 1. Let's say you only have the time to watch 1,500 feature films. These are the minimum ratings for various minimum number of votes:
 
 $minimumRatings(1500)

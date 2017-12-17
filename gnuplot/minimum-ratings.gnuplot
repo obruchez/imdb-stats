@@ -34,5 +34,5 @@ set output 'minimum-ratings.all.png'
 plot 'minimum-ratings.5.tsv' using 1:2 with lines title "5 votes", \
      'minimum-ratings.10.tsv' using 1:2 with lines title "10 votes", \
      'minimum-ratings.100.tsv' using 1:2 with lines title "100 votes", \
-     'minimum-ratings.1000.tsv' using 1:2 with lines title "1000 votes", \
-     'minimum-ratings.10000.tsv' using 1:2 with lines title "10000 votes"
+     'minimum-ratings.1000.tsv' using 1:2 with lines title "1,000 votes", \
+     'minimum-ratings.10000.tsv' using 1:2 with lines title "10,000 votes"
