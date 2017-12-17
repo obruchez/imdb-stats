@@ -65,7 +65,9 @@ object GenerateReadme {
         .reverse
 
     (for ((titleType, titleCounts) <- titleTypesAndCounts)
-      yield f" - ${ImdbStats.titleTypeDescriptions(titleType)}: $titleCounts%,d").mkString("\n")
+      yield
+        f" - ${ImdbStats.titleTypeDescriptions(titleType)}: $titleCounts%,d (${titleCounts * 100.0 / ImdbStats.titleInfos.size}%.2f%%)")
+      .mkString("\n")
   }
 
   lazy val titleWithYearCount: Int = ImdbStats.titleInfos.count { titleInfo =>

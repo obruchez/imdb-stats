@@ -22,16 +22,16 @@ As of December 17, 2017, there are 4,694,073 titles in the IMDb dumps.
 
 Titles can be partitioned into 10 different types:
 
- - TV episode: 3,115,681
- - Short film: 595,803
- - Feature film: 471,590
- - Video: 189,288
- - TV series: 139,747
- - TV movie: 121,824
- - TV mini-series: 20,875
- - Video game: 20,698
- - TV special: 10,418
- - TV short: 8,149
+ - TV episode: 3,115,681 (66.37%)
+ - Short film: 595,803 (12.69%)
+ - Feature film: 471,590 (10.05%)
+ - Video: 189,288 (4.03%)
+ - TV series: 139,747 (2.98%)
+ - TV movie: 121,824 (2.60%)
+ - TV mini-series: 20,875 (0.44%)
+ - Video game: 20,698 (0.44%)
+ - TV special: 10,418 (0.22%)
+ - TV short: 8,149 (0.17%)
 
 ### Years
 
