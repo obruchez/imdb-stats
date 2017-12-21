@@ -96,6 +96,8 @@ But the plot still doesn't look like a bell curve:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.movies.png" width="600">
 
+$movieVoteCountPercentages
+
 ### Minimum ratings
 
 Question: what's the minimum IMDb rating for a feature film that you should watch if you can only watch N feature films in your life?
@@ -139,3 +141,8 @@ $minimumRatings(250)
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.250movies.png" width="600">
 
 At the time of writing, all the movies in the [IMDb Top 250](http://www.imdb.com/chart/top) have more than 25,000 votes and a rating of 8.0 or more. If I had to guess, I would have given a minimum rating of 8.1 for a maximum of 250 movies to watch and a minimum of 25'000 votes. The discrepancy probably comes from the fact that "only votes from regular IMDb voters are considered when creating the top 250 out of the full voting database". I have no way of knowing which vote comes from "regular IMDb voters". This information is not included in the IMDb dumps.
+
+### To-do
+
+- check if there is a correlation between ratings and number of votes (plot + regression)
+- check if there is a correlation between ratings and years (plot + regression)

@@ -16,30 +16,30 @@ To compute the statistics, generate the plots / PNG images, and save the results
 
 ## Statistics
 
-As of December 17, 2017, there are 4,694,073 titles in the IMDb dumps.
+As of December 21, 2017, there are 4,700,498 titles in the IMDb dumps.
 
 ### Title types
 
 Titles can be partitioned into 10 different types:
 
- - TV episode: 3,115,681 (66.37%)
- - Short film: 595,803 (12.69%)
- - Feature film: 471,590 (10.05%)
- - Video: 189,288 (4.03%)
- - TV series: 139,747 (2.98%)
- - TV movie: 121,824 (2.60%)
- - TV mini-series: 20,875 (0.44%)
- - Video game: 20,698 (0.44%)
- - TV special: 10,418 (0.22%)
- - TV short: 8,149 (0.17%)
+ - TV episode: 3,120,588 (66.39%)
+ - Short film: 596,395 (12.69%)
+ - Feature film: 471,950 (10.04%)
+ - Video: 189,542 (4.03%)
+ - TV series: 139,903 (2.98%)
+ - TV movie: 121,916 (2.59%)
+ - TV mini-series: 20,912 (0.44%)
+ - Video game: 20,707 (0.44%)
+ - TV special: 10,422 (0.22%)
+ - TV short: 8,163 (0.17%)
 
 ### Years
 
-4,424,354 titles (94.25%) have a start and/or end year defined:
+4,430,900 titles (94.26%) have a start and/or end year defined:
 
 - minimum: 1,874.00
 - maximum: 2,115.00
-- mean: 1,999.20
+- mean: 1,999.21
 - median: 2,008.00
 - mode: 2,016.00
 - standard deviation: 22.40
@@ -50,14 +50,14 @@ The earliest title in IMDb is [The Passage of Venus ](http://www.imdb.com/title/
 
 ### Durations
 
-1,443,735 titles (30.76%) have a runtime duration defined:
+1,445,426 titles (30.75%) have a runtime duration defined:
 
 - minimum: 1.00
 - maximum: 125,156.00
 - mean: 46.79
 - median: 30.00
 - mode: 30.00
-- standard deviation: 116.57
+- standard deviation: 116.51
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.300.png" width="600">
 
@@ -65,19 +65,19 @@ Most durations above 1,000 minutes are experimental videos, total durations for 
 
 Here are the statistics and frequency plot for feature films only:
 
-- count: 291,907
+- count: 292,149
 - minimum: 1.00
 - maximum: 14,400.00
 - mean: 87.51
 - median: 88.00
 - mode: 90.00
-- standard deviation: 53.58
+- standard deviation: 53.54
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/duration-frequencies.movies.png" width="600">
 
 For short films only:
 
-- count: 387,965
+- count: 388,272
 - minimum: 1.00
 - maximum: 1,834.00
 - mean: 13.27
@@ -91,7 +91,7 @@ There is some overlap between the short films and feature films. I'm not sure it
 
 ### Ratings
 
-788,329 titles (16.79%) have ratings.
+789,386 titles (16.79%) have ratings.
 
 - minimum: 1.00
 - maximum: 10.00
@@ -107,11 +107,11 @@ There is some overlap between the short films and feature films. I'm not sure it
 Each title with a rating has at least 5 votes (this is a limit enforced by IMDb).
 
 - minimum: 5.00
-- maximum: 1,887,261.00
-- mean: 993.75
+- maximum: 1,888,855.00
+- mean: 993.63
 - median: 20.00
 - mode: 5.00
-- standard deviation: 15,247.74
+- standard deviation: 15,252.21
 
 Most titles don't have much votes. The full frequency plot is not very useful:
 
@@ -123,51 +123,58 @@ If we zoom to 1,100 votes and less, we can see what's happening a little bit bet
 
 95% of the titles with votes are in that area (i.e. about 1,100 votes and less):
 
-- votes >= 10: 570,833 (72.41%)
-- votes >= 100: 174,286 (22.11%)
-- votes >= 1,000: 41,883 (5.31%)
-- votes >= 10,000: 8,552 (1.08%)
-- votes >= 100,000: 1,605 (0.20%)
-- votes >= 1,000,000: 23 (0.00%)
+- votes ≥ 10: 571,597 (72.41%)
+- votes ≥ 100: 174,492 (22.10%)
+- votes ≥ 1,000: 41,927 (5.31%)
+- votes ≥ 10,000: 8,560 (1.08%)
+- votes ≥ 100,000: 1,608 (0.20%)
+- votes ≥ 1,000,000: 23 (0.00%)
 
 Here is a list of the titles with more than 1,000,000 votes:
 
- 1. 1,887,261 votes: [The Shawshank Redemption](http://www.imdb.com/title/tt0111161/)
- 2. 1,863,001 votes: [The Dark Knight](http://www.imdb.com/title/tt0468569/)
- 3. 1,651,848 votes: [Inception](http://www.imdb.com/title/tt1375666/)
- 4. 1,512,571 votes: [Fight Club](http://www.imdb.com/title/tt0137523/)
- 5. 1,476,191 votes: [Pulp Fiction](http://www.imdb.com/title/tt0110912/)
- 6. 1,424,344 votes: [Forrest Gump](http://www.imdb.com/title/tt0109830/)
- 7. 1,368,699 votes: [The Lord of the Rings: The Fellowship of the Ring](http://www.imdb.com/title/tt0120737/)
- 8. 1,357,615 votes: [The Matrix](http://www.imdb.com/title/tt0133093/)
- 9. 1,348,515 votes: [The Lord of the Rings: The Return of the King](http://www.imdb.com/title/tt0167260/)
- 10. 1,288,572 votes: [The Godfather](http://www.imdb.com/title/tt0068646/)
- 11. 1,268,496 votes: [The Dark Knight Rises](http://www.imdb.com/title/tt1345836/)
- 12. 1,267,723 votes: [Game of Thrones](http://www.imdb.com/title/tt0944947/)
- 13. 1,220,593 votes: [The Lord of the Rings: The Two Towers](http://www.imdb.com/title/tt0167261/)
- 14. 1,150,931 votes: [Se7en](http://www.imdb.com/title/tt0114369/)
- 15. 1,118,607 votes: [Interstellar](http://www.imdb.com/title/tt0816692/)
- 16. 1,094,842 votes: [Gladiator](http://www.imdb.com/title/tt0172495/)
- 17. 1,089,101 votes: [Batman Begins](http://www.imdb.com/title/tt0372784/)
- 18. 1,086,589 votes: [Django Unchained](http://www.imdb.com/title/tt1853728/)
- 19. 1,075,655 votes: [The Avengers](http://www.imdb.com/title/tt0848228/)
- 20. 1,043,281 votes: [Breaking Bad](http://www.imdb.com/title/tt0903747/)
- 21. 1,015,564 votes: [Star Wars: Episode IV - A New Hope](http://www.imdb.com/title/tt0076759/)
- 22. 1,005,064 votes: [The Silence of the Lambs](http://www.imdb.com/title/tt0102926/)
- 23. 1,003,465 votes: [Inglourious Basterds](http://www.imdb.com/title/tt0361748/)
+ 1. 1,888,855 votes: [The Shawshank Redemption](http://www.imdb.com/title/tt0111161/)
+ 2. 1,864,479 votes: [The Dark Knight](http://www.imdb.com/title/tt0468569/)
+ 3. 1,653,332 votes: [Inception](http://www.imdb.com/title/tt1375666/)
+ 4. 1,513,857 votes: [Fight Club](http://www.imdb.com/title/tt0137523/)
+ 5. 1,477,384 votes: [Pulp Fiction](http://www.imdb.com/title/tt0110912/)
+ 6. 1,425,693 votes: [Forrest Gump](http://www.imdb.com/title/tt0109830/)
+ 7. 1,369,869 votes: [The Lord of the Rings: The Fellowship of the Ring](http://www.imdb.com/title/tt0120737/)
+ 8. 1,358,735 votes: [The Matrix](http://www.imdb.com/title/tt0133093/)
+ 9. 1,349,685 votes: [The Lord of the Rings: The Return of the King](http://www.imdb.com/title/tt0167260/)
+ 10. 1,289,627 votes: [The Godfather](http://www.imdb.com/title/tt0068646/)
+ 11. 1,269,450 votes: [The Dark Knight Rises](http://www.imdb.com/title/tt1345836/)
+ 12. 1,269,062 votes: [Game of Thrones](http://www.imdb.com/title/tt0944947/)
+ 13. 1,221,666 votes: [The Lord of the Rings: The Two Towers](http://www.imdb.com/title/tt0167261/)
+ 14. 1,151,888 votes: [Se7en](http://www.imdb.com/title/tt0114369/)
+ 15. 1,120,080 votes: [Interstellar](http://www.imdb.com/title/tt0816692/)
+ 16. 1,095,691 votes: [Gladiator](http://www.imdb.com/title/tt0172495/)
+ 17. 1,089,898 votes: [Batman Begins](http://www.imdb.com/title/tt0372784/)
+ 18. 1,087,575 votes: [Django Unchained](http://www.imdb.com/title/tt1853728/)
+ 19. 1,076,266 votes: [The Avengers](http://www.imdb.com/title/tt0848228/)
+ 20. 1,044,290 votes: [Breaking Bad](http://www.imdb.com/title/tt0903747/)
+ 21. 1,018,092 votes: [Star Wars: Episode IV - A New Hope](http://www.imdb.com/title/tt0076759/)
+ 22. 1,006,010 votes: [The Silence of the Lambs](http://www.imdb.com/title/tt0102926/)
+ 23. 1,004,376 votes: [Inglourious Basterds](http://www.imdb.com/title/tt0361748/)
 
 Most (but not all) of those titles are feature films. The mean/median numbers of votes for feature films are greater than the mean/median numbers of votes for all titles:
 
 - minimum: 5.00
-- maximum: 1,887,261.00
-- mean: 3,106.97
+- maximum: 1,888,855.00
+- mean: 3,108.20
 - median: 44.00
 - mode: 5.00
-- standard deviation: 28,466.50
+- standard deviation: 28,483.48
 
 But the plot still doesn't look like a bell curve:
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/rating-vote-count-frequencies.movies.png" width="600">
+
+- votes ≥ 10: 176,223 (83.02%)
+- votes ≥ 100: 77,743 (36.63%)
+- votes ≥ 1,000: 25,560 (12.04%)
+- votes ≥ 10,000: 7,250 (3.42%)
+- votes ≥ 100,000: 1,504 (0.71%)
+- votes ≥ 1,000,000: 21 (0.01%)
 
 ### Minimum ratings
 
@@ -201,26 +208,31 @@ At this scale, if becomes clear that the minimum number of votes becomes less im
 
 Example 1. Let's say you only have the time to watch 1,500 feature films. These are the minimum ratings for various minimum number of votes:
 
- - votes >= 5 ⇒ rating >= 9.20
- - votes >= 10 ⇒ rating >= 9.00
- - votes >= 100 ⇒ rating >= 8.20
- - votes >= 1,000 ⇒ rating >= 8.10
- - votes >= 10,000 ⇒ rating >= 7.70
- - votes >= 25,000 ⇒ rating >= 7.30
- - votes >= 100,000 ⇒ rating >= 4.10
+ - votes ≥ 5 ⇒ rating ≥ 9.20
+ - votes ≥ 10 ⇒ rating ≥ 9.00
+ - votes ≥ 100 ⇒ rating ≥ 8.20
+ - votes ≥ 1,000 ⇒ rating ≥ 8.10
+ - votes ≥ 10,000 ⇒ rating ≥ 7.70
+ - votes ≥ 25,000 ⇒ rating ≥ 7.30
+ - votes ≥ 100,000 ⇒ rating ≥ 4.70
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.1500movies.png" width="600">
 
 Example 2. What about 250 feature films?
 
- - votes >= 5 ⇒ rating >= 9.70
- - votes >= 10 ⇒ rating >= 9.40
- - votes >= 100 ⇒ rating >= 8.80
- - votes >= 1,000 ⇒ rating >= 8.60
- - votes >= 10,000 ⇒ rating >= 8.30
- - votes >= 25,000 ⇒ rating >= 8.20
- - votes >= 100,000 ⇒ rating >= 8.10
+ - votes ≥ 5 ⇒ rating ≥ 9.70
+ - votes ≥ 10 ⇒ rating ≥ 9.50
+ - votes ≥ 100 ⇒ rating ≥ 8.80
+ - votes ≥ 1,000 ⇒ rating ≥ 8.60
+ - votes ≥ 10,000 ⇒ rating ≥ 8.30
+ - votes ≥ 25,000 ⇒ rating ≥ 8.20
+ - votes ≥ 100,000 ⇒ rating ≥ 8.10
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.250movies.png" width="600">
 
 At the time of writing, all the movies in the [IMDb Top 250](http://www.imdb.com/chart/top) have more than 25,000 votes and a rating of 8.0 or more. If I had to guess, I would have given a minimum rating of 8.1 for a maximum of 250 movies to watch and a minimum of 25'000 votes. The discrepancy probably comes from the fact that "only votes from regular IMDb voters are considered when creating the top 250 out of the full voting database". I have no way of knowing which vote comes from "regular IMDb voters". This information is not included in the IMDb dumps.
+
+### To-do
+
+- check if there is a correlation between ratings and number of votes (plot + regression)
+- check if there is a correlation between ratings and years (plot + regression)

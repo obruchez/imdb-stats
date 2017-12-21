@@ -25,7 +25,8 @@ object GenerateReadme {
       "ratingStats" -> ratingStats(),
       "voteCountStats" -> voteCountStats(),
       "movieVoteCountStats" -> movieVoteCountStats(),
-      "voteCountPercentages" -> voteCountPercentages(),
+      "voteCountPercentages" -> voteCountPercentages(voteCountValuesAndStats.values),
+      "movieVoteCountPercentages" -> voteCountPercentages(movieVoteCountValuesAndStats.values),
       "titlesWithMostVotes" -> titlesWithMostVotes(),
       "minimumRatings(1500)" -> minimumRatings(ImdbStats.MovieType, titleCount = 1500),
       "minimumRatings(250)" -> minimumRatings(ImdbStats.MovieType, titleCount = 250)
@@ -116,12 +117,12 @@ object GenerateReadme {
   def movieVoteCountStats(): String =
     movieVoteCountValuesAndStats.stats.asStrings(withCount = false).mkString("\n")
 
-  def voteCountPercentages(): String = {
+  def voteCountPercentages(voteCounts: Seq[Double]): String = {
     val minCounts = Seq(10, 100, 1000, 10000, 100000, 1000000)
 
     (for (minCount <- minCounts) yield {
-      val counts = voteCountValuesAndStats.values.count(_ >= minCount)
-      f"- votes >= $minCount%,d: $counts%,d (${counts * 100.0 / voteCountValuesAndStats.values.size}%.2f%%)"
+      val counts = voteCounts.count(_ >= minCount)
+      f"- votes ≥ $minCount%,d: $counts%,d (${counts * 100.0 / voteCounts.size}%.2f%%)"
     }).mkString("\n")
   }
 
@@ -144,7 +145,7 @@ object GenerateReadme {
       minVoteCount <- minVoteCounts
       minRating <- ImdbStats.minimumRatingsByTitleCount(titleType, minVoteCount).get(titleCount)
     } yield {
-      f" - votes >= $minVoteCount%,d ⇒ rating >= $minRating%.2f"
+      f" - votes ≥ $minVoteCount%,d ⇒ rating ≥ $minRating%.2f"
     }).mkString("\n")
   }
 }
