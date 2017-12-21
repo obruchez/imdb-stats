@@ -2,11 +2,11 @@
 
 [![Build Status](https://travis-ci.org/obruchez/imdb-stats.svg?branch=master)](https://travis-ci.org/obruchez/imdb-stats)
 
-Computes statistics using IMDb dumps.
+Computes statistics using IMDb dataset files.
 
 ## Scripts
 
-To download the IMDb dumps:
+To download the IMDb dataset files:
 
 ```download.sh <S3 key> <S3 password>```
 
@@ -16,7 +16,7 @@ To compute the statistics, generate the plots / PNG images, and save the results
 
 ## Statistics
 
-As of December 21, 2017, there are 4,700,498 titles in the IMDb dumps.
+As of December 21, 2017, there are 4,700,498 titles in the IMDb dataset files.
 
 ### Title types
 
@@ -230,7 +230,7 @@ Example 2. What about 250 feature films?
 
 <img src="https://raw.githubusercontent.com/obruchez/imdb-stats/master/results/minimum-ratings.250movies.png" width="600">
 
-At the time of writing, all the movies in the [IMDb Top 250](http://www.imdb.com/chart/top) have more than 25,000 votes and a rating of 8.0 or more. If I had to guess, I would have given a minimum rating of 8.1 for a maximum of 250 movies to watch and a minimum of 25'000 votes. The discrepancy probably comes from the fact that "only votes from regular IMDb voters are considered when creating the top 250 out of the full voting database". I have no way of knowing which vote comes from "regular IMDb voters". This information is not included in the IMDb dumps.
+At the time of writing, all the movies in the [IMDb Top 250](http://www.imdb.com/chart/top) have more than 25,000 votes and a rating of 8.0 or more. If I had to guess, I would have given a minimum rating of 8.1 for a maximum of 250 movies to watch and a minimum of 25'000 votes. The discrepancy probably comes from the fact that "only votes from regular IMDb voters are considered when creating the top 250 out of the full voting database". I have no way of knowing which vote comes from "regular IMDb voters". This information is not included in the IMDb dataset files.
 
 ### To-do
 
