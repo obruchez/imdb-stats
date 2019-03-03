@@ -41,9 +41,8 @@ case class ValuesAndStats(values: Seq[Double], stats: Stats) {
   def dumpValuesToGnuplotFile(path: Path): Unit =
     FileUtils.writeStrings(path, values.map(_.toString))
 
-  def dumpFrequenciesToGnuplotFile(
-      path: Path,
-      intervalCount: Int = ValuesAndStats.DefaultIntervalCount): Unit =
+  def dumpFrequenciesToGnuplotFile(path: Path,
+                                   intervalCount: Int = ValuesAndStats.DefaultIntervalCount): Unit =
     FileUtils.writeStrings(path, frequencies(intervalCount).map(kv => s"${kv._1}\t${kv._2}"))
 }
 

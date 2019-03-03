@@ -53,9 +53,7 @@ object GeneratePlots {
     dumpFrequencies(filename, ImdbStats.titleRatings.map(_.rating), intervalCount = 40)
 
   def dumpYearFrequencies(filename: String, yearsFilter: (Seq[Double]) => Seq[Double]): Unit =
-    dumpFrequencies(filename,
-                    yearsFilter(ImdbStats.titleYears.map(_.toDouble)),
-                    intervalCount = 50)
+    dumpFrequencies(filename, yearsFilter(ImdbStats.titleYears.map(_.toDouble)), intervalCount = 50)
 
   def dumpDurationFrequencies(filename: String,
                               durationsFilter: (Seq[Double]) => Seq[Double]): Unit =
@@ -95,7 +93,9 @@ object GeneratePlots {
                            titleCountsAndRatings.map(kv => s"${kv._1}\t${kv._2}"))
   }
 
-  def dumpMinimumRatingsForTitleCount(filename: String, titleType: String, titleCount: Int): Unit = {
+  def dumpMinimumRatingsForTitleCount(filename: String,
+                                      titleType: String,
+                                      titleCount: Int): Unit = {
     val voteCountsAndRatings =
       ImdbStats
         .minimumRatingsByVoteCount(titleType, titleCount, maxVoteCount = 30000, step = 500)
