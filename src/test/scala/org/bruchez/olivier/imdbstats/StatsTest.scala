@@ -1,8 +1,9 @@
 package org.bruchez.olivier.imdbstats
 
-import org.scalatest._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class StatsTest extends FlatSpec with Matchers {
+class StatsTest extends AnyFlatSpec with Matchers {
   "Minimum value" should "be correct" in {
     Stats(Seq(1)).min should be(1)
     Stats(Seq(1, 2)).min should be(1)
