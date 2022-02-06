@@ -1,13 +1,14 @@
 package org.bruchez.olivier.imdbstats
 
+import com.univocity.parsers.common.ParsingContext
+import com.univocity.parsers.common.processor.ObjectRowProcessor
+import com.univocity.parsers.tsv.{TsvParser, TsvParserSettings}
+
 import java.io.{BufferedReader, FileInputStream, InputStreamReader}
 import java.nio.file._
 import java.util.Date
 import java.util.zip.GZIPInputStream
-
-import com.univocity.parsers.common.ParsingContext
-import com.univocity.parsers.common.processor.ObjectRowProcessor
-import com.univocity.parsers.tsv.{TsvParser, TsvParserSettings}
+import scala.io.Source
 
 object FileUtils {
   def fromTsvGz[T](path: Path, f: Array[AnyRef] => Option[T]): Seq[T] = {
@@ -28,7 +29,7 @@ object FileUtils {
           if (first) {
             first = false
           } else {
-            f(row).foreach(buffer.append(_))
+            f(row).foreach(buffer.append)
           }
         }
       }
@@ -39,7 +40,7 @@ object FileUtils {
 
       parser.parse(in)
 
-      buffer
+      buffer.toSeq
     } finally {
       in.close()
     }
@@ -65,8 +66,15 @@ object FileUtils {
     }
   }
 
-  def fileContents(path: Path): String =
-    scala.io.Source.fromFile(path.toFile).mkString
+  def fileContents(path: Path): String = {
+    val source = Source.fromFile(path.toFile)
+
+    try {
+      source.mkString
+    } finally {
+      source.close()
+    }
+  }
 
   def lastModifiedDate(path: Path): Date =
     Date.from(Files.getLastModifiedTime(path).toInstant)

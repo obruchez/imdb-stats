@@ -44,7 +44,8 @@ class StatsTest extends FlatSpec with Matchers {
 
   "Frequencies" should "work as expected" in {
     ValuesAndStats(Seq(1, 2, 3)).frequencies(intervalCount = 3) should be(
-      Seq((1, 1), (2, 1), (3, 1)))
+      Seq((1, 1), (2, 1), (3, 1))
+    )
 
     ValuesAndStats(Seq(1, 3)).frequencies(intervalCount = 3) should be(Seq((1, 1), (2, 0), (3, 1)))
   }

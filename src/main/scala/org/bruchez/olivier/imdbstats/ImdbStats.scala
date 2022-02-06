@@ -1,7 +1,6 @@
 package org.bruchez.olivier.imdbstats
 
 import java.nio.file.Paths
-
 import scala.annotation.tailrec
 
 object ImdbStats {
@@ -12,16 +11,17 @@ object ImdbStats {
   val ShortType = "short"
 
   val titleTypeDescriptions = Map(
-    "tvEpisode" -> "TV episode",
-    "short" -> "Short film",
     "movie" -> "Feature film",
-    "video" -> "Video",
-    "tvSeries" -> "TV series",
-    "tvMovie" -> "TV movie",
+    "short" -> "Short film",
+    "tvEpisode" -> "TV episode",
     "tvMiniSeries" -> "TV mini-series",
-    "videoGame" -> "Video game",
+    "tvMovie" -> "TV movie",
+    "tvPilot" -> "TV pilot",
+    "tvSeries" -> "TV series",
+    "tvShort" -> "TV short",
     "tvSpecial" -> "TV special",
-    "tvShort" -> "TV short"
+    "video" -> "Video",
+    "videoGame" -> "Video game"
   )
 
   lazy val titleRatings: Seq[TitleRating] =
@@ -79,9 +79,11 @@ object ImdbStats {
     } yield value
   }
 
-  def minimumRatingsByTitleCount(titleType: String,
-                                 voteCount: Int,
-                                 maxTitleCountOption: Option[Int] = None): Map[Int, Double] = {
+  def minimumRatingsByTitleCount(
+      titleType: String,
+      voteCount: Int,
+      maxTitleCountOption: Option[Int] = None
+  ): Map[Int, Double] = {
     val sortedRatings = (for {
       titleInfo <- titleInfos
       if titleInfo.titleType == titleType
@@ -95,9 +97,11 @@ object ImdbStats {
     // 0->11 1->11 2->11 3->11    4->10 5->10   6->9 7->9 8->9   ...
 
     @tailrec
-    def titleCountsAndRatings(remainingRatings: Seq[Double],
-                              acc: Seq[(Int, Double)] = Seq(),
-                              previousRatingOption: Option[Double] = None): Seq[(Int, Double)] =
+    def titleCountsAndRatings(
+        remainingRatings: Seq[Double],
+        acc: Seq[(Int, Double)] = Seq(),
+        previousRatingOption: Option[Double] = None
+    ): Seq[(Int, Double)] =
       if (remainingRatings.isEmpty || maxTitleCountOption.exists(_ <= acc.size)) {
         acc
       } else {
@@ -108,22 +112,25 @@ object ImdbStats {
 
         val newRemainingRatings = remainingRatings.drop(titleWithRatingCount)
         val newAcc = acc ++ (acc.size until acc.size + titleWithRatingCount).map(count =>
-          count -> previousRating)
+          count -> previousRating
+        )
         titleCountsAndRatings(newRemainingRatings, newAcc, previousRatingOption = Some(rating))
       }
 
     titleCountsAndRatings(sortedRatings).toMap
   }
 
-  def minimumRatingsByVoteCount(titleType: String,
-                                titleCount: Int,
-                                maxVoteCount: Int,
-                                step: Int): Map[Int, Double] =
+  def minimumRatingsByVoteCount(
+      titleType: String,
+      titleCount: Int,
+      maxVoteCount: Int,
+      step: Int
+  ): Map[Int, Double] =
     (5 to maxVoteCount by step)
-      .flatMap(
-        voteCount =>
-          minimumRatingsByTitleCount(titleType, voteCount, maxTitleCountOption = Some(titleCount))
-            .get(titleCount)
-            .map(voteCount -> _))
+      .flatMap(voteCount =>
+        minimumRatingsByTitleCount(titleType, voteCount, maxTitleCountOption = Some(titleCount))
+          .get(titleCount)
+          .map(voteCount -> _)
+      )
       .toMap
 }

@@ -16,7 +16,8 @@ object GenerateReadme {
       "yearStats" -> yearStats(),
       "titleWithDurationCount" -> titleWithDurationCount.asString,
       "titleWithDurationPercentage" -> titleWithDurationCount.asPercentage(
-        ImdbStats.titleInfos.size),
+        ImdbStats.titleInfos.size
+      ),
       "durationStats" -> durationStats(),
       "movieDurationStats" -> movieDurationStats(),
       "shortDurationStats" -> shortDurationStats(),
@@ -49,8 +50,8 @@ object GenerateReadme {
     FileUtils.writeString(Paths.get("README.md"), contents)
 
   def withSubstitutions(contents: String, substitutions: Seq[(String, String)]): String =
-    substitutions.foldLeft(contents) {
-      case (string, (target, replacement)) => string.replace("$" + target, replacement)
+    substitutions.foldLeft(contents) { case (string, (target, replacement)) =>
+      string.replace("$" + target, replacement)
     }
 
   def lastModifiedDateString(): String =
@@ -67,8 +68,7 @@ object GenerateReadme {
         .reverse
 
     (for ((titleType, titleCounts) <- titleTypesAndCounts)
-      yield
-        f" - ${ImdbStats.titleTypeDescriptions(titleType)}: $titleCounts%,d (${titleCounts * 100.0 / ImdbStats.titleInfos.size}%.2f%%)")
+      yield f" - ${ImdbStats.titleTypeDescriptions(titleType)}: $titleCounts%,d (${titleCounts * 100.0 / ImdbStats.titleInfos.size}%.2f%%)")
       .mkString("\n")
   }
 
@@ -134,8 +134,7 @@ object GenerateReadme {
         .takeWhile(_.voteCount >= threshold)
         .zipWithIndex
       titleInfo = ImdbStats.titleInfosById(titleRating.id)
-    } yield
-      f" ${index + 1}. ${titleRating.voteCount}%,d votes: [${titleInfo.primaryTitle}](${titleInfo.url})")
+    } yield f" ${index + 1}. ${titleRating.voteCount}%,d votes: [${titleInfo.primaryTitle}](${titleInfo.url})")
       .mkString("\n")
 
   def minimumRatings(titleType: String, titleCount: Int): String = {

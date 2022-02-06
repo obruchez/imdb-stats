@@ -1,7 +1,6 @@
 package org.bruchez.olivier.imdbstats
 
 import java.nio.file.Path
-
 import scala.annotation.tailrec
 
 case class ValuesAndStats(values: Seq[Double], stats: Stats) {
@@ -12,15 +11,19 @@ case class ValuesAndStats(values: Seq[Double], stats: Stats) {
     // centered around the minimum value and the last interval will be centered around the maximum value.
 
     @tailrec
-    def frequencies(interval: Int = 0,
-                    startIndex: Int = 0,
-                    acc: Seq[(Double, Int)] = Seq()): Seq[(Double, Int)] = {
+    def frequencies(
+        interval: Int = 0,
+        startIndex: Int = 0,
+        acc: Seq[(Double, Int)] = Seq()
+    ): Seq[(Double, Int)] = {
       if (interval >= intervalCount || startIndex >= sorted.length) {
         acc
       } else {
-        val middleValueForCurrentInterval = stats.min + stats.range * interval.toDouble / (intervalCount - 1)
+        val middleValueForCurrentInterval =
+          stats.min + stats.range * interval.toDouble / (intervalCount - 1)
 
-        val maximumValueForCurrentInterval = stats.min + stats.range * (interval.toDouble + 0.5) / (intervalCount - 1)
+        val maximumValueForCurrentInterval =
+          stats.min + stats.range * (interval.toDouble + 0.5) / (intervalCount - 1)
 
         val countForCurrentInterval = sorted
           .drop(startIndex)
@@ -41,8 +44,10 @@ case class ValuesAndStats(values: Seq[Double], stats: Stats) {
   def dumpValuesToGnuplotFile(path: Path): Unit =
     FileUtils.writeStrings(path, values.map(_.toString))
 
-  def dumpFrequenciesToGnuplotFile(path: Path,
-                                   intervalCount: Int = ValuesAndStats.DefaultIntervalCount): Unit =
+  def dumpFrequenciesToGnuplotFile(
+      path: Path,
+      intervalCount: Int = ValuesAndStats.DefaultIntervalCount
+  ): Unit =
     FileUtils.writeStrings(path, frequencies(intervalCount).map(kv => s"${kv._1}\t${kv._2}"))
 }
 

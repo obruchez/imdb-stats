@@ -2,7 +2,7 @@
 
 # Generate the data used by Gnuplot
 
-sbt -mem 8192 "runMain org.bruchez.olivier.imdbstats.GeneratePlots"
+sbt -mem 32000 "runMain org.bruchez.olivier.imdbstats.GeneratePlots"
 
 mkdir -p results
 
@@ -26,6 +26,6 @@ cd ..
 
 # Generate README.md
 
-sbt -mem 8192 "runMain org.bruchez.olivier.imdbstats.GenerateReadme"
+sbt -mem 32000 "runMain org.bruchez.olivier.imdbstats.GenerateReadme"
 
 stty echo

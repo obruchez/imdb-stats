@@ -1,6 +1,6 @@
 # imdb-stats
 
-[![Build Status](https://travis-ci.org/obruchez/imdb-stats.svg?branch=master)](https://travis-ci.org/obruchez/imdb-stats)
+[![Scala CI](https://github.com/obruchez/imdb-stats/actions/workflows/scala.yml/badge.svg)](https://github.com/obruchez/imdb-stats/actions/workflows/scala.yml)
 
 Computes statistics using IMDb dataset files.
 

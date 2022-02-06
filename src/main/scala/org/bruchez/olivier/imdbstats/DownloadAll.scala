@@ -1,11 +1,11 @@
 package org.bruchez.olivier.imdbstats
 
-import java.io.{FileOutputStream, InputStream}
-
-import com.amazonaws.{AmazonClientException, AmazonServiceException}
 import com.amazonaws.auth.{AWSCredentials, AWSCredentialsProvider, BasicAWSCredentials}
 import com.amazonaws.services.s3.AmazonS3Client
 import com.amazonaws.services.s3.model.GetObjectRequest
+import com.amazonaws.{AmazonClientException, AmazonServiceException}
+
+import java.io.{FileOutputStream, InputStream}
 
 // Quickly adapted from GetObject.java example code
 
@@ -21,12 +21,14 @@ object DownloadAll {
 
     val s3Client = new AmazonS3Client(credentialsProvider)
 
-    val filenames = Seq("title.basics.tsv.gz",
-                        "title.crew.tsv.gz",
-                        "title.episode.tsv.gz",
-                        "title.principals.tsv.gz",
-                        "title.ratings.tsv.gz",
-                        "name.basics.tsv.gz")
+    val filenames = Seq(
+      "title.basics.tsv.gz",
+      "title.crew.tsv.gz",
+      "title.episode.tsv.gz",
+      "title.principals.tsv.gz",
+      "title.ratings.tsv.gz",
+      "name.basics.tsv.gz"
+    )
 
     filenames.foreach(download(s3Client, _))
   }
@@ -46,7 +48,8 @@ object DownloadAll {
       case ase: AmazonServiceException =>
         println(
           "Caught an AmazonServiceException, which  means your request made it to " +
-            "Amazon S3, but was rejected with an error response for some reason.")
+            "Amazon S3, but was rejected with an error response for some reason."
+        )
         println("Error Message:    " + ase.getMessage)
         println("HTTP Status Code: " + ase.getStatusCode)
         println("AWS Error Code:   " + ase.getErrorCode)
@@ -55,7 +58,8 @@ object DownloadAll {
       case ace: AmazonClientException =>
         println(
           "Caught an AmazonClientException, which means the client encountered an internal error " +
-            "while trying to communicate with S3, such as not being able to access the network.")
+            "while trying to communicate with S3, such as not being able to access the network."
+        )
         println("Error Message: " + ace.getMessage)
     }
   }

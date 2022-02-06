@@ -1,12 +1,14 @@
 package org.bruchez.olivier.imdbstats
 
-case class Stats(sampleCount: Int,
-                 min: Double,
-                 max: Double,
-                 mean: Double,
-                 median: Double,
-                 mode: Double,
-                 standardDeviation: Double) {
+case class Stats(
+    sampleCount: Int,
+    min: Double,
+    max: Double,
+    mean: Double,
+    median: Double,
+    mode: Double,
+    standardDeviation: Double
+) {
   val range: Double = max - min
 
   def asStrings(withCount: Boolean): Seq[String] =
@@ -43,14 +45,17 @@ object Stats {
     val standardDeviation = math.sqrt(
       values
         .map(value => (value - mean) * (value - mean))
-        .sum / (sampleCount - 1))
+        .sum / (sampleCount - 1)
+    )
 
-    Stats(sampleCount,
-          min = ordered.head,
-          max = ordered.last,
-          mean = mean,
-          median = median,
-          mode = mode,
-          standardDeviation = standardDeviation)
+    Stats(
+      sampleCount,
+      min = ordered.head,
+      max = ordered.last,
+      mean = mean,
+      median = median,
+      mode = mode,
+      standardDeviation = standardDeviation
+    )
   }
 }
